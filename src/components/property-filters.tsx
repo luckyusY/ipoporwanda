@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search } from "lucide-react";
+import { MapPin, Search, X } from "lucide-react";
 import { PropertyCard } from "@/components/property-card";
 import type { ListingPurpose, PropertyListing } from "@/lib/types";
 
@@ -14,6 +14,11 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
     () => Array.from(new Set(listings.map((listing) => listing.category))),
     [listings],
   );
+  const topLocations = useMemo(() => {
+    const priority = ["Kibagabaga", "Kacyiru", "Nyarutarama", "Gacuriro", "Rebero", "Kimihurura", "Kiyovu", "Remera"];
+    const available = new Set(listings.map((listing) => listing.location));
+    return priority.filter((location) => available.has(location)).slice(0, 8);
+  }, [listings]);
 
   const filtered = listings.filter((listing) => {
     const text = `${listing.title} ${listing.location} ${listing.district} ${listing.category}`.toLowerCase();
@@ -59,6 +64,39 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="mb-8 rounded-lg border border-line bg-surface p-4 shadow-sm">
+        <div className="mb-3 flex items-center justify-between gap-4">
+          <p className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-brand">
+            <MapPin size={16} /> Top locations
+          </p>
+          {query ? (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              className="inline-flex items-center gap-1 rounded-full bg-surface-soft px-3 py-1 text-xs font-bold text-muted transition hover:text-foreground"
+            >
+              <X size={13} /> Clear
+            </button>
+          ) : null}
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {topLocations.map((location) => (
+            <button
+              key={location}
+              type="button"
+              onClick={() => setQuery(location)}
+              className={`rounded-full border px-4 py-2 text-sm font-bold transition ${
+                query.toLowerCase() === location.toLowerCase()
+                  ? "border-brand bg-brand text-white"
+                  : "border-line bg-background text-brand-dark hover:border-brand"
+              }`}
+            >
+              {location}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="mb-5 flex items-center justify-between gap-4">

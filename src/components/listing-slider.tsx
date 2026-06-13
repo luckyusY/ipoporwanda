@@ -1,7 +1,8 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { PropertyCard } from "@/components/property-card";
 import type { PropertyListing } from "@/lib/types";
 
@@ -16,17 +17,9 @@ export function ListingSlider({
   listings: PropertyListing[];
   dark?: boolean;
 }) {
-  const railRef = useRef<HTMLDivElement>(null);
+  const sliderKey = title.replace(/[^a-z0-9]/gi, "-").toLowerCase();
 
-  function move(direction: "left" | "right") {
-    const rail = railRef.current;
-    if (!rail) return;
-
-    rail.scrollBy({
-      left: direction === "left" ? -rail.clientWidth * 0.82 : rail.clientWidth * 0.82,
-      behavior: "smooth",
-    });
-  }
+  if (!listings.length) return null;
 
   return (
     <section className={dark ? "bg-brand-dark py-20 text-white" : "py-20"}>
@@ -41,30 +34,45 @@ export function ListingSlider({
           <div className="flex gap-2">
             <button
               type="button"
-              onClick={() => move("left")}
-              className={dark ? "grid size-11 place-items-center rounded-full border border-white/20 hover:bg-white hover:text-brand-dark" : "grid size-11 place-items-center rounded-full border border-line bg-surface hover:border-brand"}
-              aria-label="Previous listings"
+              className={`${sliderKey}-prev grid size-11 place-items-center rounded-full border transition ${
+                dark ? "border-white/20 hover:bg-white hover:text-brand-dark" : "border-line bg-surface hover:border-brand"
+              }`}
+              aria-label={`Previous ${title}`}
             >
               <ChevronLeft size={20} />
             </button>
             <button
               type="button"
-              onClick={() => move("right")}
-              className={dark ? "grid size-11 place-items-center rounded-full border border-white/20 hover:bg-white hover:text-brand-dark" : "grid size-11 place-items-center rounded-full border border-line bg-surface hover:border-brand"}
-              aria-label="Next listings"
+              className={`${sliderKey}-next grid size-11 place-items-center rounded-full border transition ${
+                dark ? "border-white/20 hover:bg-white hover:text-brand-dark" : "border-line bg-surface hover:border-brand"
+              }`}
+              aria-label={`Next ${title}`}
             >
               <ChevronRight size={20} />
             </button>
           </div>
         </div>
 
-        <div ref={railRef} className="no-scrollbar flex snap-x gap-5 overflow-x-auto scroll-smooth pb-3">
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            prevEl: `.${sliderKey}-prev`,
+            nextEl: `.${sliderKey}-next`,
+          }}
+          spaceBetween={20}
+          slidesPerView={1.08}
+          breakpoints={{
+            640: { slidesPerView: 2.05 },
+            1024: { slidesPerView: 3.05 },
+          }}
+          className="listing-swiper !overflow-visible"
+        >
           {listings.map((listing, index) => (
-            <div key={listing.id} className="w-[86%] flex-none snap-start sm:w-[48%] lg:w-[31.5%]">
+            <SwiperSlide key={listing.id} className="h-auto">
               <PropertyCard listing={listing} priority={index < 2} />
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

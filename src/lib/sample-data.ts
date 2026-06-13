@@ -33,7 +33,7 @@ export const sampleListings: PropertyListing[] = [
     bathrooms: 5,
     areaSqm: 420,
     images: [
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80",
+      "/images/hero/kigali-villa-hero.png",
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=75",
     ],
     summary: "A calm, secure home with wide terraces, furnished interiors, and quick access to KG roads.",
@@ -137,7 +137,7 @@ export const sampleListings: PropertyListing[] = [
     bathrooms: 3,
     areaSqm: 168,
     images: [
-      "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1400&q=80",
+      "/images/hero/kigali-apartment-hero.png",
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1200&q=75",
     ],
     summary: "A polished apartment with a generous balcony, concierge feel, and fast access to the city center.",
@@ -287,7 +287,7 @@ export const sampleListings: PropertyListing[] = [
     price: 180,
     currency: "USD",
     images: [
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1400&q=80",
+      "/images/hero/kigali-car-hero.png",
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=75",
     ],
     summary: "Premium SUV for airport pickup, executive movement, events, and luxury Kigali travel.",
