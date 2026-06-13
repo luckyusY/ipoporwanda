@@ -102,6 +102,17 @@ html {
   border-color: var(--brand);
 }
 
+/* Hero — use 100svh so mobile browser chrome doesn't cut off content */
+.hero-section {
+  min-height: calc(100svh - 4rem);
+}
+
+/* Fluid hero heading: never smaller than 1.9rem, grows with viewport */
+.hero-title {
+  font-size: clamp(1.9rem, 5.5vw, 4.5rem);
+  line-height: 1.06;
+}
+
 /* Gradient text */
 .brand-gradient {
   background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
