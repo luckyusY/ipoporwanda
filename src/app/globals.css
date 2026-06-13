@@ -53,3 +53,11 @@ html {
 .text-balance {
   text-wrap: balance;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

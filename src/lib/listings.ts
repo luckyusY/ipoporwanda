@@ -5,13 +5,13 @@ import { sampleListings } from "@/lib/sample-data";
 import type { PropertyListing } from "@/lib/types";
 
 async function loadListings() {
-  if (!process.env.MONGODB_URI) {
+  if (!process.env.MONGODB_URI || process.env.NEXT_PHASE === "phase-production-build") {
     return sampleListings;
   }
 
   try {
     await getMongo();
-    const listings = await ListingModel.find({ status: "published", group: "properties" })
+    const listings = await ListingModel.find({ status: "published" })
       .sort({ featured: -1, createdAt: -1 })
       .lean<PropertyListing[]>();
 

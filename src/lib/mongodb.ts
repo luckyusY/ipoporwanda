@@ -13,6 +13,7 @@ export function getMongo() {
     connection = mongoose.connect(uri, {
       dbName: process.env.MONGODB_DB ?? "ipoporwanda",
       bufferCommands: false,
+      serverSelectionTimeoutMS: 5000,
     });
   }
 

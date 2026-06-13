@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PropertiesPage() {
-  const listings = await getListings();
+  const listings = (await getListings()).filter((listing) => listing.group === "properties");
 
   return (
     <>

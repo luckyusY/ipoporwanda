@@ -1,22 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Bath, BedDouble, MessageCircle, Phone, Ruler } from "lucide-react";
+import { Bath, BedDouble, Car, MessageCircle, Phone, Ruler } from "lucide-react";
+import { CardImageCarousel } from "@/components/card-image-carousel";
 import { formatMoney, toWhatsappUrl } from "@/lib/format";
 import type { PropertyListing } from "@/lib/types";
 
 export function PropertyCard({ listing, priority = false }: { listing: PropertyListing; priority?: boolean }) {
+  const href = listing.group === "properties" ? `/properties/${listing.slug}` : "#contact";
+
   return (
     <article className="group overflow-hidden rounded-lg border border-line bg-surface shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-      <Link href={`/properties/${listing.slug}`} className="block" aria-label={listing.title}>
+      <Link href={href} className="block" aria-label={listing.title}>
         <div className="relative aspect-[4/3] overflow-hidden bg-surface-soft">
-          <Image
-            src={listing.images[0]}
-            alt={listing.title}
-            fill
-            priority={priority}
-            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition duration-700 group-hover:scale-105"
-          />
+          <CardImageCarousel images={listing.images} alt={listing.title} priority={priority} />
           <div className="absolute left-3 top-3 flex gap-2">
             <span className="rounded-full bg-white/95 px-3 py-1 text-xs font-bold uppercase tracking-wide text-brand-dark">
               For {listing.purpose}
@@ -34,7 +29,7 @@ export function PropertyCard({ listing, priority = false }: { listing: PropertyL
         <div>
           <p className="text-sm font-medium text-muted">{listing.location}, {listing.district}</p>
           <h3 className="mt-1 line-clamp-2 min-h-14 text-xl font-semibold tracking-tight">
-            <Link href={`/properties/${listing.slug}`} className="hover:text-brand">
+            <Link href={href} className="hover:text-brand">
               {listing.title}
             </Link>
           </h3>
@@ -44,6 +39,7 @@ export function PropertyCard({ listing, priority = false }: { listing: PropertyL
         </div>
 
         <div className="flex flex-wrap gap-3 text-sm text-muted">
+          {listing.group === "cars" ? <span className="inline-flex items-center gap-1"><Car size={16} />Premium car</span> : null}
           {listing.bedrooms ? <span className="inline-flex items-center gap-1"><BedDouble size={16} />{listing.bedrooms} beds</span> : null}
           {listing.bathrooms ? <span className="inline-flex items-center gap-1"><Bath size={16} />{listing.bathrooms} baths</span> : null}
           {listing.areaSqm ? <span className="inline-flex items-center gap-1"><Ruler size={16} />{listing.areaSqm} sqm</span> : null}
