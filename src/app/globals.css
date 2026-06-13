@@ -101,3 +101,44 @@ html {
 .property-thumbs .swiper-slide-thumb-active > div {
   border-color: var(--brand);
 }
+
+/* Gradient text */
+.brand-gradient {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle grid pattern for dark sections */
+.grid-pattern {
+  background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Card elevation on hover */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile drawer slide-in */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.drawer-enter {
+  animation: slide-in-right 280ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+/* Backdrop fade */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.overlay-enter {
+  animation: fade-in 220ms ease both;
+}

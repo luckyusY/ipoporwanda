@@ -17,11 +17,14 @@ export default async function PropertiesPage() {
       <SmoothScroll />
       <SiteHeader />
       <main>
-        <div className="border-b border-line bg-surface-soft">
-          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-brand">Kigali listings</p>
-            <h1 className="mt-3 max-w-3xl text-5xl font-black tracking-tight">Properties for rent and sale</h1>
-            <p className="mt-4 max-w-2xl text-muted">
+        <div className="relative overflow-hidden border-b border-line bg-surface-soft">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(15,107,79,0.07),transparent_60%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">Kigali listings</p>
+            <h1 className="mt-2.5 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">
+              Properties for rent and sale
+            </h1>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-muted">
               Search verified homes, apartments, villas, land, offices, and commercial spaces with direct owner or agent contact.
             </p>
           </div>

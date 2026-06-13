@@ -31,45 +31,45 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-8 grid gap-3 rounded-lg border border-line bg-surface p-3 shadow-sm md:grid-cols-[1fr_auto_auto]">
+      {/* Search + filter bar */}
+      <div className="mb-6 grid gap-3 rounded-2xl border border-line bg-surface p-3 shadow-sm md:grid-cols-[1fr_auto_auto]">
         <label className="relative block">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" size={18} />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-muted" size={17} />
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search by location, category, or title"
-            className="h-12 w-full rounded-md border border-line bg-background pl-11 pr-4 text-sm outline-none ring-brand/20 transition focus:border-brand focus:ring-4"
+            placeholder="Search by location, category, or title…"
+            className="h-11 w-full rounded-xl border border-line bg-background pl-11 pr-4 text-sm font-medium outline-none ring-brand/15 transition focus:border-brand focus:ring-4"
           />
         </label>
         <select
           value={purpose}
           onChange={(event) => setPurpose(event.target.value as ListingPurpose | "all")}
-          className="h-12 rounded-md border border-line bg-background px-4 text-sm font-medium outline-none ring-brand/20 transition focus:border-brand focus:ring-4"
+          className="h-11 rounded-xl border border-line bg-background px-4 text-sm font-semibold outline-none ring-brand/15 transition focus:border-brand focus:ring-4"
           aria-label="Filter by purpose"
         >
-          <option value="all">Rent and sale</option>
+          <option value="all">Rent &amp; sale</option>
           <option value="rent">For rent</option>
           <option value="sale">For sale</option>
         </select>
         <select
           value={category}
           onChange={(event) => setCategory(event.target.value)}
-          className="h-12 rounded-md border border-line bg-background px-4 text-sm font-medium capitalize outline-none ring-brand/20 transition focus:border-brand focus:ring-4"
+          className="h-11 rounded-xl border border-line bg-background px-4 text-sm font-semibold capitalize outline-none ring-brand/15 transition focus:border-brand focus:ring-4"
           aria-label="Filter by category"
         >
           <option value="all">All categories</option>
           {categories.map((item) => (
-            <option key={item} value={item}>
-              {item}
-            </option>
+            <option key={item} value={item}>{item}</option>
           ))}
         </select>
       </div>
 
-      <div className="mb-8 rounded-lg border border-line bg-surface p-4 shadow-sm">
+      {/* Location quick-filters */}
+      <div className="mb-8 rounded-2xl border border-line bg-surface p-4 shadow-sm">
         <div className="mb-3 flex items-center justify-between gap-4">
-          <p className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-brand">
-            <MapPin size={16} /> Top locations
+          <p className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.18em] text-brand">
+            <MapPin size={14} strokeWidth={2.5} /> Top locations
           </p>
           {query ? (
             <button
@@ -77,7 +77,7 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
               onClick={() => setQuery("")}
               className="inline-flex items-center gap-1 rounded-full bg-surface-soft px-3 py-1 text-xs font-bold text-muted transition hover:text-foreground"
             >
-              <X size={13} /> Clear
+              <X size={12} /> Clear
             </button>
           ) : null}
         </div>
@@ -87,10 +87,10 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
               key={location}
               type="button"
               onClick={() => setQuery(location)}
-              className={`rounded-full border px-4 py-2 text-sm font-bold transition ${
+              className={`rounded-full border px-3.5 py-1.5 text-xs font-bold transition ${
                 query.toLowerCase() === location.toLowerCase()
                   ? "border-brand bg-brand text-white"
-                  : "border-line bg-background text-brand-dark hover:border-brand"
+                  : "border-line bg-background text-brand-dark hover:border-brand/40 hover:bg-brand-soft"
               }`}
             >
               {location}
@@ -99,21 +99,25 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
         </div>
       </div>
 
-      <div className="mb-5 flex items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold tracking-tight">Verified properties</h1>
-        <p className="text-sm font-medium text-muted">{filtered.length} listings</p>
+      {/* Results header */}
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <h2 className="text-2xl font-black tracking-tight">Verified properties</h2>
+        <span className="rounded-full border border-line bg-surface px-3 py-1 text-xs font-bold text-muted">
+          {filtered.length} listing{filtered.length !== 1 ? "s" : ""}
+        </span>
       </div>
 
       {filtered.length ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((listing, index) => (
             <PropertyCard key={listing.id} listing={listing} priority={index < 3} />
           ))}
         </div>
       ) : (
-        <div className="rounded-lg border border-dashed border-line bg-surface p-10 text-center">
-          <h2 className="text-xl font-semibold">No matching properties yet</h2>
-          <p className="mt-2 text-muted">Try a different location, status, or property type.</p>
+        <div className="rounded-2xl border border-dashed border-line bg-surface p-14 text-center">
+          <p className="text-4xl">🏡</p>
+          <h3 className="mt-4 text-xl font-bold">No matching properties</h3>
+          <p className="mt-2 text-sm text-muted">Try a different location, status, or property type.</p>
         </div>
       )}
     </section>
