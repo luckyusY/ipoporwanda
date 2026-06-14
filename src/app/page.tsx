@@ -3,14 +3,8 @@ import {
   ArrowRight,
   BadgeCheck,
   Building2,
-  Car,
-  Clock3,
-  Gem,
-  Home as HomeIcon,
   MapPin,
-  ShieldCheck,
   Sparkles,
-  TrendingUp,
 } from "lucide-react";
 import Image from "next/image";
 import { PropertyCard } from "@/components/property-card";
@@ -20,7 +14,6 @@ import { SwiperSection } from "@/components/swiper-section";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { categoryConfigs } from "@/lib/sample-data";
 import { getListings } from "@/lib/listings";
 
 const categoryTiles = [
@@ -34,50 +27,6 @@ const categoryTiles = [
   { label: "Nyarutarama", href: "/properties", image: "/images/properties/prop-15.jpg" },
 ];
 
-function PromoBanner({
-  href,
-  image,
-  className,
-  priority,
-  children,
-}: {
-  href: string;
-  image: string;
-  className?: string;
-  priority?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`group relative flex min-h-[250px] overflow-hidden bg-brand-dark sm:min-h-[300px] md:min-h-[340px] ${className ?? ""}`}
-    >
-      {/* Mobile: image fills behind text at reduced opacity */}
-      <div className="absolute inset-0 sm:hidden">
-        <Image src={image} alt="" fill sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-brand-dark/60" />
-      </div>
-
-      {/* Text side — solid background, always readable */}
-      <div className="relative z-10 flex flex-col justify-center px-6 py-8 text-white sm:w-[44%] sm:shrink-0 sm:bg-brand-dark sm:px-10">
-        {children}
-      </div>
-
-      {/* Image side — clean, no overlay, desktop only */}
-      <div className="relative hidden flex-1 sm:block">
-        <Image
-          src={image}
-          alt=""
-          fill
-          priority={priority}
-          sizes="(min-width: 768px) 35vw, 0vw"
-          className="object-cover transition duration-500 group-hover:scale-[1.025]"
-        />
-      </div>
-    </Link>
-  );
-}
-
 export default async function Home() {
   const listings = await getListings();
   const properties = listings.filter((l) => l.group === "properties");
@@ -85,7 +34,6 @@ export default async function Home() {
   const heroListings = listings.filter((l) => l.featured);
   const rentListings = properties.filter((l) => l.purpose === "rent");
   const saleListings = properties.filter((l) => l.purpose === "sale");
-  const visibleCategories = categoryConfigs.filter((c) => c.visible);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -153,136 +101,6 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="border-y-[3px] border-gold bg-white">
-          <Reveal>
-            <div className="mx-auto grid max-w-[1368px] gap-[3px] bg-gold md:grid-cols-2">
-              <PromoBanner href="/properties" image="/images/properties/prop-03.jpg" priority>
-                <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
-                  Ipopo exclusive
-                </p>
-                <h2 className="mt-3 text-3xl font-black leading-none sm:text-5xl">
-                  Kigali luxury homes
-                </h2>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/78">
-                  Villas, apartments, land, and investment-ready homes with verified direct enquiries.
-                </p>
-                <span className="press mt-5 inline-flex w-fit rounded-md bg-gold px-7 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_3px_0_rgba(0,0,0,0.16)]">
-                  Browse properties
-                </span>
-              </PromoBanner>
-
-              <PromoBanner href="/#cars" image="/images/hero/kigali-car-hero.png" priority>
-                <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
-                  Premium mobility
-                </p>
-                <h2 className="mt-3 text-3xl font-black leading-none sm:text-5xl">
-                  Cars for rent & sale
-                </h2>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-white/78">
-                  Executive SUVs, airport pickups, VIP transfers, and inspected vehicles for sale.
-                </p>
-                <span className="press mt-5 inline-flex w-fit rounded-md bg-gold px-7 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_3px_0_rgba(0,0,0,0.16)]">
-                  View cars
-                </span>
-              </PromoBanner>
-
-              <PromoBanner href="/admin" image="/images/properties/prop-07.jpg" className="md:col-span-2">
-                <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
-                  For owners and agents
-                </p>
-                <h2 className="mt-3 max-w-2xl text-3xl font-black leading-none sm:text-6xl">
-                  Turn your listing into a premium digital showroom.
-                </h2>
-                <p className="mt-4 max-w-xl text-sm leading-6 text-white/78 sm:text-base">
-                  Upload images, preview cards, save drafts, and prepare property pages built for SEO and fast WhatsApp leads.
-                </p>
-                <span className="press mt-5 inline-flex w-fit rounded-md bg-gold px-7 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_3px_0_rgba(0,0,0,0.16)]">
-                  List with Ipopo
-                </span>
-              </PromoBanner>
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Trust strip ─────────────────────────────────────────────── */}
-        <section className="border-b border-line bg-surface py-4 sm:py-0">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <SwiperSection initialView={1.1} sm={2} lg={4} gap={0} nav={false}>
-              {[
-                [ShieldCheck, "Verified listings", "Every property is human-reviewed before going live."],
-                [Clock3,      "Instant contact",   "WhatsApp and call CTAs on every listing card."],
-                [TrendingUp,  "Built to scale",    "Properties, cars, SEO pages, and admin workflows."],
-                [Gem,         "Premium UX",        "Motion, optimised media, and a refined design system."],
-              ].map(([Icon, title, text], i) => (
-                <div key={String(title)} className="flex gap-3.5 border-r border-line px-4 py-5 last:border-r-0 sm:px-6 sm:py-7">
-                  <span className="mt-0.5 grid size-10 flex-none place-items-center rounded-2xl bg-brand-soft text-brand sm:size-11">
-                    <Icon size={19} />
-                  </span>
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand/50">
-                      0{i + 1}
-                    </p>
-                    <h3 className="mt-0.5 text-[15px] font-bold leading-snug">{String(title)}</h3>
-                    <p className="mt-1 text-xs leading-[1.6] text-muted sm:text-sm">{String(text)}</p>
-                  </div>
-                </div>
-              ))}
-            </SwiperSection>
-          </div>
-        </section>
-
-        {/* ── Categories ──────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
-          <Reveal className="mb-8 sm:mb-10">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
-              Marketplace categories
-            </p>
-            <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
-              Everything valuable, beautifully organized.
-            </h2>
-            <p className="mt-3 max-w-lg text-sm leading-7 text-muted">
-              Properties and cars in one focused platform — with direct-to-agent contact built in at every step.
-            </p>
-          </Reveal>
-
-          <SwiperSection initialView={1.1} sm={2} lg={4} gap={16}>
-            {visibleCategories.map((category, i) => {
-              const Icon = category.group === "cars" ? Car : HomeIcon;
-              const isPrimary = i % 2 === 0;
-              return (
-                <div
-                  key={category.label}
-                  className={`group rounded-2xl border p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6 ${
-                    isPrimary
-                      ? "border-brand/15 bg-brand-soft"
-                      : "border-gold/15 bg-surface"
-                  }`}
-                >
-                  <div
-                    className={`mb-5 flex size-11 items-center justify-center rounded-2xl shadow-sm sm:size-12 ${
-                      isPrimary ? "bg-brand text-white" : "bg-gold text-white"
-                    }`}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <h3 className="text-lg font-black tracking-tight sm:text-xl">
-                    {category.label}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-muted">
-                    Curated {category.purpose} opportunities with fast direct enquiries.
-                  </p>
-                  <p
-                    className={`mt-4 text-sm font-bold transition group-hover:translate-x-0.5 ${
-                      isPrimary ? "text-brand" : "text-gold"
-                    }`}
-                  >
-                    Explore listings →
-                  </p>
-                </div>
-              );
-            })}
-          </SwiperSection>
-        </section>
 
         {/* ── Listing sliders ─────────────────────────────────────────── */}
         <ListingGridSection
