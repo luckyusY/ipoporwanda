@@ -10,15 +10,12 @@ import {
   ChevronRight,
   MapPin,
   MessageCircle,
-  Search,
   ShieldCheck,
 } from "lucide-react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { formatMoney, toWhatsappUrl } from "@/lib/format";
 import type { PropertyListing } from "@/lib/types";
-
-const quickLocations = ["Kigali", "Kacyiru", "Nyarutarama", "Kibagabaga"];
 
 function formatCategory(category: PropertyListing["category"]) {
   return category.charAt(0).toUpperCase() + category.slice(1);
@@ -66,40 +63,26 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
                     </p>
 
                     <h1 className="hero-title max-w-2xl font-black tracking-tight text-balance">
-                      Find your next place in Kigali.
+                      Kigali&apos;s premium property marketplace.
                     </h1>
 
-                    <form
-                      action="/properties"
-                      className="mt-6 flex flex-col overflow-hidden rounded-2xl border border-white/18 bg-white p-2 shadow-2xl shadow-brand-dark/25 sm:flex-row sm:items-center"
-                    >
-                      <label className="flex min-h-[52px] flex-1 items-center gap-3 px-4 text-brand-dark">
-                        <Search size={20} className="text-brand" />
-                        <span className="sr-only">Search listings</span>
-                        <input
-                          name="q"
-                          placeholder="Search location, house, apartment..."
-                          className="min-w-0 flex-1 bg-transparent text-sm font-bold outline-none placeholder:text-muted sm:text-base"
-                        />
-                      </label>
-                      <button
-                        type="submit"
-                        className="min-h-[52px] rounded-xl bg-brand px-6 text-sm font-black text-white transition hover:bg-brand-dark"
-                      >
-                        Search
-                      </button>
-                    </form>
+                    <p className="mt-4 max-w-lg text-sm leading-7 text-white/80 sm:text-base">
+                      Verified listings, direct WhatsApp contact, and fast property pages built for Rwanda.
+                    </p>
 
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {quickLocations.map((location) => (
-                        <Link
-                          key={location}
-                          href={`/properties?q=${encodeURIComponent(location)}`}
-                          className="rounded-full border border-white/18 bg-white/12 px-3 py-1.5 text-[11px] font-bold backdrop-blur-md transition hover:bg-white hover:text-brand-dark"
-                        >
-                          {location}
-                        </Link>
-                      ))}
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <Link
+                        href="/properties"
+                        className="inline-flex min-h-[50px] items-center gap-2 rounded-full bg-brand px-7 text-sm font-black text-white transition hover:bg-brand-dark"
+                      >
+                        Browse properties <ArrowRight size={16} />
+                      </Link>
+                      <Link
+                        href="/#cars"
+                        className="inline-flex min-h-[50px] items-center gap-2 rounded-full border border-white/25 bg-white/12 px-6 text-sm font-black backdrop-blur-sm transition hover:bg-white hover:text-brand-dark"
+                      >
+                        View cars
+                      </Link>
                     </div>
                   </div>
 

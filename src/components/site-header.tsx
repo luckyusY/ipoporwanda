@@ -77,7 +77,7 @@ export function SiteHeader() {
               width={80}
               height={80}
               priority
-              className="size-11 shrink-0 rounded-xl border border-line object-cover sm:size-12"
+              className="size-12 shrink-0 object-contain sm:size-14"
             />
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-black sm:text-base">Ipopo Rwanda</span>
@@ -87,20 +87,49 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <form action="/properties" className="relative order-3 col-span-2 min-w-0 sm:order-none sm:col-span-1">
-            <input
-              name="q"
-              aria-label="Search listings"
-              placeholder="Search properties, cars, locations..."
-              className="h-10 w-full rounded-full border-0 bg-white px-4 pr-10 text-sm font-medium text-[#111827] outline-none ring-2 ring-transparent transition focus:ring-gold sm:px-5 sm:pr-12 sm:font-semibold"
-            />
-            <button
-              type="submit"
-              aria-label="Search"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gold sm:right-4"
-            >
-              <Search aria-hidden size={21} />
-            </button>
+          <form
+            action="/properties"
+            className="order-3 col-span-2 min-w-0 sm:order-none sm:col-span-1"
+          >
+            <div className="flex h-10 items-center overflow-hidden rounded-full bg-[#f1f1f1] ring-2 ring-transparent transition focus-within:bg-white focus-within:ring-gold">
+              {/* Location select */}
+              <select
+                name="location"
+                aria-label="Filter by location"
+                className="h-full shrink-0 border-0 bg-transparent pl-3.5 pr-1 text-[11px] font-bold text-foreground outline-none sm:text-xs"
+              >
+                <option value="">All areas</option>
+                <option>Kibagabaga</option>
+                <option>Kacyiru</option>
+                <option>Nyarutarama</option>
+                <option>Gacuriro</option>
+                <option>Kiyovu</option>
+                <option>Kimihurura</option>
+                <option>Remera</option>
+                <option>Rebero</option>
+                <option>Kimironko</option>
+              </select>
+
+              {/* Divider */}
+              <div aria-hidden className="mx-1 h-4 w-px shrink-0 bg-line" />
+
+              {/* Keyword input */}
+              <input
+                name="q"
+                aria-label="Search listings"
+                placeholder="Property, apartment, car..."
+                className="h-full min-w-0 flex-1 bg-transparent px-2 text-sm font-medium text-foreground outline-none placeholder:text-muted"
+              />
+
+              {/* Submit button */}
+              <button
+                type="submit"
+                aria-label="Search"
+                className="mr-1.5 grid size-7 shrink-0 place-items-center rounded-full bg-gold text-white transition hover:bg-[#c9a200]"
+              >
+                <Search aria-hidden size={13} />
+              </button>
+            </div>
           </form>
 
           <div className="flex shrink-0 items-center gap-2 sm:hidden">
