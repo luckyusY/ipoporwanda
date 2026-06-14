@@ -13,6 +13,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Image from "next/image";
+import { PropertyCard } from "@/components/property-card";
 import { HeroSlider } from "@/components/hero-slider";
 import { ListingSlider } from "@/components/listing-slider";
 import { Reveal } from "@/components/reveal";
@@ -45,7 +46,7 @@ function PromoBanner({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className={`group relative min-h-[260px] overflow-hidden bg-black md:min-h-[320px] ${className ?? ""}`}>
+    <Link href={href} className={`group relative min-h-[230px] overflow-hidden bg-black sm:min-h-[260px] md:min-h-[320px] ${className ?? ""}`}>
       <Image
         src={image}
         alt=""
@@ -53,8 +54,8 @@ function PromoBanner({
         sizes="(min-width: 768px) 50vw, 100vw"
         className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.025]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,5,0.86),rgba(21,17,10,0.55),transparent_78%)]" />
-      <div className="absolute inset-y-0 left-0 flex w-[76%] max-w-[520px] flex-col justify-center px-6 text-white sm:px-10">
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,5,0.9),rgba(21,17,10,0.68),rgba(21,17,10,0.18))]" />
+      <div className="absolute inset-y-0 left-0 flex w-full max-w-[560px] flex-col justify-center px-5 text-white sm:w-[82%] sm:px-10 md:w-[76%]">
         {children}
       </div>
     </Link>
@@ -97,7 +98,7 @@ export default async function Home() {
                 <Link
                   key={tile.label}
                   href={tile.href}
-                  className="group relative block h-44 w-48 overflow-hidden bg-black"
+                  className="group relative block h-36 w-36 overflow-hidden rounded-md bg-black sm:h-44 sm:w-48"
                 >
                   <Image
                     src={tile.image}
@@ -107,8 +108,8 @@ export default async function Home() {
                     className="object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-black/72 px-3 py-3">
-                    <p className="text-sm font-black text-white">{tile.label}</p>
-                    <p className="mt-0.5 text-[11px] font-bold uppercase tracking-wide text-gold">
+                    <p className="text-xs font-black text-white sm:text-sm">{tile.label}</p>
+                    <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-gold sm:text-[11px]">
                       Explore now
                     </p>
                   </div>
@@ -125,7 +126,7 @@ export default async function Home() {
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   Ipopo exclusive
                 </p>
-                <h2 className="mt-3 text-4xl font-black leading-none sm:text-5xl">
+                <h2 className="mt-3 text-3xl font-black leading-none sm:text-5xl">
                   Kigali luxury homes
                 </h2>
                 <p className="mt-3 max-w-sm text-sm leading-6 text-white/78">
@@ -140,7 +141,7 @@ export default async function Home() {
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   Premium mobility
                 </p>
-                <h2 className="mt-3 text-4xl font-black leading-none sm:text-5xl">
+                <h2 className="mt-3 text-3xl font-black leading-none sm:text-5xl">
                   Cars for rent & sale
                 </h2>
                 <p className="mt-3 max-w-sm text-sm leading-6 text-white/78">
@@ -155,7 +156,7 @@ export default async function Home() {
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   For owners and agents
                 </p>
-                <h2 className="mt-3 max-w-2xl text-4xl font-black leading-none sm:text-6xl">
+                <h2 className="mt-3 max-w-2xl text-3xl font-black leading-none sm:text-6xl">
                   Turn your listing into a premium digital showroom.
                 </h2>
                 <p className="mt-4 max-w-xl text-sm leading-6 text-white/78 sm:text-base">
@@ -271,6 +272,35 @@ export default async function Home() {
           listings={cars}
           id="cars"
         />
+
+        <section className="border-y border-line bg-surface">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+            <Reveal className="mb-8 flex flex-col justify-between gap-4 sm:mb-10 lg:flex-row lg:items-end">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
+                  Owner spotlight
+                </p>
+                <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
+                  More properties ready for enquiries.
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
+                  A denser homepage section for owners and agents who want their listings visible fast.
+                </p>
+              </div>
+              <Link
+                href="/admin"
+                className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-brand px-6 text-sm font-bold text-white shadow-sm shadow-brand/20 transition hover:bg-brand-dark sm:w-fit"
+              >
+                Add your property
+              </Link>
+            </Reveal>
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {properties.slice(0, 8).map((listing, index) => (
+                <PropertyCard key={`spotlight-${listing.id}`} listing={listing} priority={index < 2} />
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ── Platform features ───────────────────────────────────────── */}
         <section className="border-y border-line bg-surface-soft">

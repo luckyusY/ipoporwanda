@@ -52,7 +52,7 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="bg-[#050505] text-white">
-      <div className="border-b border-gold/25 bg-[#15110a]">
+      <div className="border-b border-gold/25 bg-brand-dark">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 py-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-xl font-black">Premium Kigali marketplace</p>
@@ -123,7 +123,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="bg-[#15110a]">
+      <div className="bg-brand-dark">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
           <p>© 2026 Ipopo Rwanda. All rights reserved.</p>
           <p>Built for Vercel, MongoDB, Cloudinary, SEO, and fast enquiries.</p>

@@ -44,14 +44,14 @@ export function SiteHeader() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <div className="bg-[#050505] px-2 py-1 text-center text-[11px] font-black leading-[18px] text-white sm:px-4">
-        <span className="text-gold">Premium Kigali property</span> with instant WhatsApp enquiry.{" "}
+      <div className="bg-ipopo-blue px-2 py-1 text-center text-[10px] font-black leading-[16px] text-white sm:px-4 sm:text-[11px] sm:leading-[18px]">
+        <span className="text-gold">Ipopo Rwanda</span> premium property and cars.{" "}
         <Link href="/admin" className="text-gold underline-offset-2 hover:underline">
-          LIST YOUR PROPERTY
+          LIST NOW
         </Link>
       </div>
 
-      <div className="hidden border-y border-gold/25 bg-[#15110a] text-white sm:block">
+      <div className="hidden border-y border-gold/25 bg-brand-dark text-white sm:block">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-1 text-[10px] font-semibold uppercase tracking-wide 2xl:px-6">
           <div className="hidden gap-5 md:flex">
             <Link href="/properties">Verified Listings</Link>
@@ -69,30 +69,30 @@ export function SiteHeader() {
       </div>
 
       <div className="bg-[#050505] text-white">
-        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-2 py-2 sm:gap-4 sm:px-4 2xl:px-6">
-          <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Ipopo Rwanda home">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-2 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-4 sm:px-4 2xl:px-6">
+          <Link href="/" className="flex min-w-0 shrink items-center gap-2" aria-label="Ipopo Rwanda home">
             <Image
               src="/logo.jfif"
               alt="Ipopo Rwanda"
               width={80}
               height={80}
               priority
-              className="size-10 rounded-full object-cover sm:size-12"
+              className="size-11 shrink-0 rounded-xl border border-white/15 object-cover sm:size-12"
             />
-            <span className="hidden leading-tight sm:block">
-              <span className="block text-base font-black">Ipopo Rwanda</span>
-              <span className="block text-[10px] font-bold uppercase tracking-wide text-gold">
+            <span className="min-w-0 leading-tight">
+              <span className="block truncate text-sm font-black sm:text-base">Ipopo Rwanda</span>
+              <span className="block truncate text-[9px] font-bold uppercase tracking-wide text-gold sm:text-[10px]">
                 Real estate marketplace
               </span>
             </span>
           </Link>
 
-          <form action="/properties" className="relative min-w-0">
+          <form action="/properties" className="relative order-3 col-span-2 min-w-0 sm:order-none sm:col-span-1">
             <input
               name="q"
               aria-label="Search listings"
-              placeholder="Search Kigali properties, cars, locations..."
-              className="h-9 w-full rounded-full border-0 bg-white px-4 pr-10 text-sm font-medium text-[#111827] outline-none ring-2 ring-transparent transition focus:ring-gold sm:h-10 sm:px-5 sm:pr-12 sm:font-semibold"
+              placeholder="Search properties, cars, locations..."
+              className="h-10 w-full rounded-full border-0 bg-white px-4 pr-10 text-sm font-medium text-[#111827] outline-none ring-2 ring-transparent transition focus:ring-gold sm:px-5 sm:pr-12 sm:font-semibold"
             />
             <button
               type="submit"
@@ -103,11 +103,11 @@ export function SiteHeader() {
             </button>
           </form>
 
-          <div className="flex items-center gap-3 sm:hidden">
-            <a href={`tel:${phoneTel}`} aria-label="Call Ipopo Rwanda">
+          <div className="flex shrink-0 items-center gap-2 sm:hidden">
+            <a href={`tel:${phoneTel}`} aria-label="Call Ipopo Rwanda" className="grid size-10 place-items-center rounded-full bg-white/10">
               <Phone aria-hidden size={22} />
             </a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Ipopo Rwanda">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Ipopo Rwanda" className="grid size-10 place-items-center rounded-full bg-[#16a34a]">
               <MessageCircle aria-hidden size={23} />
             </a>
           </div>

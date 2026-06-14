@@ -54,7 +54,7 @@ export function MainNav() {
   return (
     <nav
       onMouseLeave={() => setOpenMenu(null)}
-      className="relative hidden border-y border-gold/35 bg-[#15110a] text-white md:block"
+      className="relative hidden border-y border-gold/35 bg-brand-dark text-white md:block"
     >
       <div className="mx-auto flex max-w-[1440px] items-center gap-2 px-4 2xl:px-6">
         <Link
@@ -72,7 +72,7 @@ export function MainNav() {
             onMouseEnter={() => setOpenMenu(item.label)}
             onFocus={() => setOpenMenu(item.label)}
             className={`flex shrink-0 items-center gap-1 px-4 py-2 text-sm font-semibold ${
-              openMenu === item.label ? "bg-gold text-white" : "hover:bg-[#2a2113]"
+              openMenu === item.label ? "bg-ipopo-blue text-white" : "hover:bg-[#0f5138]"
             }`}
           >
             {item.label}
@@ -115,7 +115,7 @@ export function MainNav() {
                 ))}
               </div>
             </div>
-            <div className="bg-[#15110a] p-5 text-white">
+            <div className="bg-brand-dark p-5 text-white">
               <p className="text-xs font-black uppercase tracking-wider text-gold">Ipopo advantage</p>
               <h4 className="mt-2 text-2xl font-black">Marketplace with real estate depth.</h4>
               <p className="mt-3 text-sm leading-6 text-white/75">{active.promo}</p>
