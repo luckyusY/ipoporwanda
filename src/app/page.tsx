@@ -268,6 +268,7 @@ export default async function Home() {
 
         {/* ── Listing sliders ─────────────────────────────────────────── */}
         <ListingGridSection
+          id="listings"
           eyebrow="Homes, villas, apartments"
           title="Properties for rent"
           listings={rentListings}
