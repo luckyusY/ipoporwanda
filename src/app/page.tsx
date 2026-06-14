@@ -37,11 +37,13 @@ function PromoBanner({
   href,
   image,
   className,
+  priority,
   children,
 }: {
   href: string;
   image: string;
   className?: string;
+  priority?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -50,6 +52,7 @@ function PromoBanner({
         src={image}
         alt=""
         fill
+        priority={priority}
         sizes="(min-width: 768px) 50vw, 100vw"
         className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.025]"
       />
@@ -103,7 +106,7 @@ export default async function Home() {
                     src={tile.image}
                     alt={tile.label}
                     fill
-                    sizes="192px"
+                    sizes="(min-width: 1024px) 180px, (min-width: 640px) 25vw, 50vw"
                     className="object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-brand-dark/82 px-3 py-3">
@@ -121,7 +124,7 @@ export default async function Home() {
         <section className="border-y-[3px] border-gold bg-white">
           <Reveal>
             <div className="mx-auto grid max-w-[1368px] gap-[3px] bg-gold md:grid-cols-2">
-              <PromoBanner href="/properties" image="/images/hero/kigali-villa-hero.png">
+              <PromoBanner href="/properties" image="/images/hero/kigali-villa-hero.png" priority>
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   Ipopo exclusive
                 </p>
@@ -136,7 +139,7 @@ export default async function Home() {
                 </span>
               </PromoBanner>
 
-              <PromoBanner href="/#cars" image="/images/hero/kigali-car-hero.png">
+              <PromoBanner href="/#cars" image="/images/hero/kigali-car-hero.png" priority>
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   Premium mobility
                 </p>
