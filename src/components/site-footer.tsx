@@ -52,7 +52,7 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="bg-brand-dark text-white">
-      <div className="border-b border-gold/25 bg-gradient-to-r from-ipopo-blue via-brand to-brand-dark">
+      <div className="border-b border-gold/25 bg-ipopo-blue">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 py-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-xl font-black">Premium Kigali marketplace</p>

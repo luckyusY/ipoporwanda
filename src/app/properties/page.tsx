@@ -22,9 +22,8 @@ export default async function PropertiesPage() {
       <SiteHeader />
       <main>
         {/* Page header */}
-        <div className="relative overflow-hidden border-b border-line bg-surface-soft">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(15,107,79,0.07),transparent_60%)]" />
-          <div className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+        <div className="border-b border-line bg-surface-soft">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
               Kigali listings
             </p>

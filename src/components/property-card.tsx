@@ -34,12 +34,9 @@ export function PropertyCard({
           priority={priority}
         />
 
-        {/* Bottom scrim so price text is always legible */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-20 bg-gradient-to-t from-black/50 to-transparent" />
-
         {/* Badges — top left */}
         <div className="absolute left-3 top-3 z-20 flex flex-wrap gap-1.5">
-          <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-brand-dark shadow-sm">
+          <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-brand-dark shadow-sm">
             For {listing.purpose}
           </span>
           {listing.featured ? (
@@ -49,8 +46,8 @@ export function PropertyCard({
           ) : null}
         </div>
 
-        {/* Price — bottom left, always visible */}
-        <p className="absolute bottom-3 left-3 z-20 text-[17px] font-black text-white drop-shadow">
+        {/* Price — solid badge, always readable regardless of image */}
+        <p className="absolute bottom-3 left-3 z-20 rounded-full bg-brand-dark px-3.5 py-1.5 text-[14px] font-black text-white shadow">
           {formatMoney(listing.price, listing.currency)}
         </p>
 

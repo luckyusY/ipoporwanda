@@ -107,23 +107,41 @@ export default async function Home() {
       <main>
         <HeroSlider listings={heroListings.length ? heroListings : listings} />
 
-        <section className="bg-gradient-to-r from-ipopo-blue via-brand to-gold py-5">
-          <div className="mx-auto max-w-7xl px-4">
-            <SwiperSection initialView={2.2} sm={4} lg={8} gap={12} nav={false}>
+        <section className="bg-brand-dark py-10 sm:py-14">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* Section header */}
+            <div className="mb-7 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
+                  Browse by category
+                </p>
+                <h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                  Find exactly what you&apos;re looking for.
+                </h2>
+              </div>
+              <Link
+                href="/properties"
+                className="shrink-0 text-sm font-bold text-white/55 transition hover:text-white"
+              >
+                View all →
+              </Link>
+            </div>
+
+            <SwiperSection initialView={2.2} sm={4} lg={8} gap={12} nav={false} dark>
               {categoryTiles.map((tile) => (
                 <Link
                   key={tile.label}
                   href={tile.href}
-                  className="group relative block h-32 overflow-hidden rounded-lg bg-brand-dark sm:h-36"
+                  className="group relative block h-36 overflow-hidden rounded-xl bg-brand sm:h-44"
                 >
                   <Image
                     src={tile.image}
                     alt={tile.label}
                     fill
                     sizes="(min-width: 1024px) 180px, (min-width: 640px) 25vw, 50vw"
-                    className="object-cover transition group-hover:scale-105"
+                    className="object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-brand-dark/82 px-3 py-3">
+                  <div className="absolute inset-x-0 bottom-0 bg-brand-dark px-3 py-3.5">
                     <p className="text-xs font-black text-white sm:text-sm">{tile.label}</p>
                     <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-gold sm:text-[11px]">
                       Explore now
@@ -236,8 +254,8 @@ export default async function Home() {
                   key={category.label}
                   className={`group rounded-2xl border p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6 ${
                     isPrimary
-                      ? "border-brand/15 bg-gradient-to-br from-brand-soft via-surface to-surface"
-                      : "border-gold/15 bg-gradient-to-br from-gold/8 via-surface to-surface"
+                      ? "border-brand/15 bg-brand-soft"
+                      : "border-gold/15 bg-surface"
                   }`}
                 >
                   <div
@@ -405,12 +423,9 @@ export default async function Home() {
         </section>
 
         {/* ── CTA ─────────────────────────────────────────────────────── */}
-        <section id="contact" className="relative overflow-hidden bg-brand-dark text-white">
-          <div className="pointer-events-none absolute inset-0 grid-pattern opacity-60" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(199,147,62,0.18),transparent_55%)]" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(15,107,79,0.35),transparent_45%)]" />
+        <section id="contact" className="bg-brand-dark text-white">
 
-          <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-14">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
