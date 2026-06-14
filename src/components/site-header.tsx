@@ -1,163 +1,137 @@
 "use client";
 
+import { MessageCircle, Phone, PlusCircle, Search } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Building2, Car, Home, MapPin, Menu, PlusCircle, X } from "lucide-react";
+import { MainNav } from "@/components/main-nav";
 
-const navLinks = [
-  { href: "/properties", icon: Building2, label: "Properties" },
-  { href: "/#locations", icon: MapPin, label: "Locations" },
-  { href: "/#contact", icon: Car, label: "Cars" },
-] as const;
+const phoneDisplay = "+250 788 000 000";
+const phoneTel = "+250788000000";
+const whatsappUrl = "https://wa.me/250788000000?text=Hello%20Ipopo%20Rwanda%2C%20I%20need%20help%20with%20a%20listing.";
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
-  // Prevent background scroll when drawer is open
   useEffect(() => {
-    if (!open) return;
-    const saved = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = saved;
-    };
-  }, [open]);
+    let lastY = window.scrollY;
+    let ticking = false;
 
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+    const update = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastY;
+      if (currentY < 24) setHidden(false);
+      else if (delta > 8) setHidden(true);
+      else if (delta < -8) setHidden(false);
+      lastY = currentY;
+      ticking = false;
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
 
-  const close = () => setOpen(false);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <>
-      <header className="sticky top-0 z-50 border-b border-line/60 bg-background/92 backdrop-blur-2xl">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Ipopo Rwanda home">
-            <span className="grid size-9 flex-none place-items-center rounded-xl bg-gradient-to-br from-brand to-brand-dark text-white shadow-sm shadow-brand/30">
-              <Home size={17} strokeWidth={2.5} aria-hidden />
-            </span>
-            <div className="leading-none">
-              <span className="block text-[15px] font-black tracking-tight">Ipopo Rwanda</span>
-              <span className="mt-0.5 block text-[11px] text-muted">Premium Kigali properties</span>
-            </div>
-          </Link>
+    <header
+      className={`sticky top-0 z-50 shadow-lg shadow-black/25 transition-transform duration-300 ease-out ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
+      <div className="bg-[#050505] px-2 py-1 text-center text-[11px] font-black leading-[18px] text-white sm:px-4">
+        <span className="text-gold">Premium Kigali property</span> with instant WhatsApp enquiry.{" "}
+        <Link href="/admin" className="text-gold underline-offset-2 hover:underline">
+          LIST YOUR PROPERTY
+        </Link>
+      </div>
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
-            {navLinks.map(({ href, icon: Icon, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold text-muted transition hover:bg-surface-soft hover:text-foreground"
-              >
-                <Icon size={14} aria-hidden />
-                {label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <Link
-              href="/admin"
-              className="hidden items-center gap-1.5 rounded-full bg-brand px-4 py-2.5 text-sm font-bold text-white shadow-sm shadow-brand/25 transition hover:bg-brand-dark sm:inline-flex"
-            >
-              <PlusCircle size={15} strokeWidth={2.5} aria-hidden />
-              List now
-            </Link>
-
-            {/* Hamburger — 44 × 44 px touch target */}
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              className="grid size-11 place-items-center rounded-full border border-line transition hover:bg-surface-soft md:hidden"
-              aria-label="Open navigation"
-              aria-expanded={open}
-              aria-controls="mobile-drawer"
-            >
-              <Menu size={20} />
-            </button>
+      <div className="hidden border-y border-gold/25 bg-[#15110a] text-white sm:block">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-1 text-[10px] font-semibold uppercase tracking-wide 2xl:px-6">
+          <div className="hidden gap-5 md:flex">
+            <Link href="/properties">Verified Listings</Link>
+            <Link href="/#locations">Kigali Locations</Link>
+            <Link href="/admin">Owner Studio</Link>
+          </div>
+          <div className="ml-auto flex items-center gap-4">
+            <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+            <Link href="/#cars">Cars & Mobility</Link>
           </div>
         </div>
-      </header>
+      </div>
 
-      {/* ── Mobile drawer ─────────────────────────────────── */}
-      {open && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="overlay-enter fixed inset-0 z-[60] bg-foreground/30 backdrop-blur-sm"
-            aria-hidden="true"
-            onClick={close}
-          />
+      <div className="bg-[#050505] text-white">
+        <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-2 py-2 sm:gap-4 sm:px-4 2xl:px-6">
+          <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Ipopo Rwanda home">
+            <Image
+              src="/logo.jfif"
+              alt="Ipopo Rwanda"
+              width={80}
+              height={80}
+              priority
+              className="size-10 rounded-full object-cover sm:size-12"
+            />
+            <span className="hidden leading-tight sm:block">
+              <span className="block text-base font-black">Ipopo Rwanda</span>
+              <span className="block text-[10px] font-bold uppercase tracking-wide text-gold">
+                Real estate marketplace
+              </span>
+            </span>
+          </Link>
 
-          {/* Panel — clamp width so it never overflows a 320 px screen */}
-          <aside
-            id="mobile-drawer"
-            className="drawer-enter fixed right-0 top-0 z-[70] flex h-full w-[min(80vw,22rem)] flex-col bg-background shadow-2xl"
-            aria-label="Mobile navigation"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-line px-5 py-4">
-              <div className="flex items-center gap-2">
-                <span className="grid size-7 flex-none place-items-center rounded-lg bg-gradient-to-br from-brand to-brand-dark text-white">
-                  <Home size={13} strokeWidth={2.5} aria-hidden />
-                </span>
-                <span className="text-sm font-black">Ipopo Rwanda</span>
-              </div>
-
-              {/* Close — 44 × 44 px */}
-              <button
-                type="button"
-                onClick={close}
-                className="grid size-11 place-items-center rounded-full border border-line transition hover:bg-surface-soft"
-                aria-label="Close navigation"
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            {/* Links — each row min-h 52 px for easy tap */}
-            <nav
-              className="flex flex-1 flex-col gap-1 overflow-y-auto p-4"
-              aria-label="Mobile menu"
+          <form action="/properties" className="relative min-w-0">
+            <input
+              name="q"
+              aria-label="Search listings"
+              placeholder="Search Kigali properties, cars, locations..."
+              className="h-9 w-full rounded-full border-0 bg-white px-4 pr-10 text-sm font-medium text-[#111827] outline-none ring-2 ring-transparent transition focus:ring-gold sm:h-10 sm:px-5 sm:pr-12 sm:font-semibold"
+            />
+            <button
+              type="submit"
+              aria-label="Search"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gold sm:right-4"
             >
-              {navLinks.map(({ href, icon: Icon, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={close}
-                  className="flex min-h-[52px] items-center gap-3 rounded-xl px-4 text-[15px] font-semibold transition hover:bg-surface-soft hover:text-brand"
-                >
-                  <span className="grid size-9 flex-none place-items-center rounded-lg bg-brand-soft text-brand">
-                    <Icon size={16} aria-hidden />
-                  </span>
-                  {label}
-                </Link>
-              ))}
-            </nav>
+              <Search aria-hidden size={21} />
+            </button>
+          </form>
 
-            {/* CTA */}
-            <div className="border-t border-line p-4">
-              <Link
-                href="/admin"
-                onClick={close}
-                className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full bg-brand text-sm font-bold text-white transition hover:bg-brand-dark"
-              >
-                <PlusCircle size={16} strokeWidth={2.5} aria-hidden />
-                List a property
-              </Link>
-            </div>
-          </aside>
-        </>
-      )}
-    </>
+          <div className="flex items-center gap-3 sm:hidden">
+            <a href={`tel:${phoneTel}`} aria-label="Call Ipopo Rwanda">
+              <Phone aria-hidden size={22} />
+            </a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Ipopo Rwanda">
+              <MessageCircle aria-hidden size={23} />
+            </a>
+          </div>
+
+          <div className="hidden items-center gap-2 sm:flex">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-sm font-bold hover:bg-white hover:text-[#15110a]"
+            >
+              <MessageCircle size={16} /> WhatsApp
+            </a>
+            <Link
+              href="/admin"
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-gold px-4 text-sm font-black text-white"
+            >
+              <PlusCircle size={16} /> List
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <MainNav />
+    </header>
   );
 }

@@ -12,13 +12,54 @@ import {
   Sparkles,
   TrendingUp,
 } from "lucide-react";
+import Image from "next/image";
 import { HeroSlider } from "@/components/hero-slider";
 import { ListingSlider } from "@/components/listing-slider";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { CardSwiper } from "@/components/card-swiper";
 import { categoryConfigs } from "@/lib/sample-data";
 import { getListings } from "@/lib/listings";
+
+const categoryTiles = [
+  { label: "Apartments", href: "/properties", image: "/images/hero/kigali-apartment-hero.png" },
+  { label: "Luxury villas", href: "/properties", image: "/images/hero/kigali-villa-hero.png" },
+  { label: "Land & plots", href: "/properties", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=75" },
+  { label: "Commercial", href: "/properties", image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=75" },
+  { label: "Cars for rent", href: "/#cars", image: "/images/hero/kigali-car-hero.png" },
+  { label: "Cars for sale", href: "/#cars", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=75" },
+  { label: "Kacyiru", href: "/properties", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=75" },
+  { label: "Nyarutarama", href: "/properties", image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?auto=format&fit=crop&w=900&q=75" },
+];
+
+function PromoBanner({
+  href,
+  image,
+  className,
+  children,
+}: {
+  href: string;
+  image: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link href={href} className={`group relative min-h-[260px] overflow-hidden bg-black md:min-h-[320px] ${className ?? ""}`}>
+      <Image
+        src={image}
+        alt=""
+        fill
+        sizes="(min-width: 768px) 50vw, 100vw"
+        className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.025]"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,5,0.86),rgba(21,17,10,0.55),transparent_78%)]" />
+      <div className="absolute inset-y-0 left-0 flex w-[76%] max-w-[520px] flex-col justify-center px-6 text-white sm:px-10">
+        {children}
+      </div>
+    </Link>
+  );
+}
 
 export default async function Home() {
   const listings = await getListings();
@@ -48,6 +89,85 @@ export default async function Home() {
       />
       <main>
         <HeroSlider listings={heroListings.length ? heroListings : listings} />
+
+        <section className="bg-[linear-gradient(90deg,#050505,#15110a,#050505)] py-5">
+          <div className="mx-auto max-w-7xl px-4">
+            <CardSwiper>
+              {categoryTiles.map((tile) => (
+                <Link
+                  key={tile.label}
+                  href={tile.href}
+                  className="group relative block h-44 w-48 overflow-hidden bg-black"
+                >
+                  <Image
+                    src={tile.image}
+                    alt={tile.label}
+                    fill
+                    sizes="192px"
+                    className="object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-black/72 px-3 py-3">
+                    <p className="text-sm font-black text-white">{tile.label}</p>
+                    <p className="mt-0.5 text-[11px] font-bold uppercase tracking-wide text-gold">
+                      Explore now
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </CardSwiper>
+          </div>
+        </section>
+
+        <section className="border-y-[3px] border-gold bg-white">
+          <Reveal>
+            <div className="mx-auto grid max-w-[1368px] gap-[3px] bg-gold md:grid-cols-2">
+              <PromoBanner href="/properties" image="/images/hero/kigali-villa-hero.png">
+                <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
+                  Ipopo exclusive
+                </p>
+                <h2 className="mt-3 text-4xl font-black leading-none sm:text-5xl">
+                  Kigali luxury homes
+                </h2>
+                <p className="mt-3 max-w-sm text-sm leading-6 text-white/78">
+                  Villas, apartments, land, and investment-ready homes with verified direct enquiries.
+                </p>
+                <span className="press mt-5 inline-flex w-fit rounded-md bg-gold px-7 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_3px_0_rgba(0,0,0,0.16)]">
+                  Browse properties
+                </span>
+              </PromoBanner>
+
+              <PromoBanner href="/#cars" image="/images/hero/kigali-car-hero.png">
+                <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
+                  Premium mobility
+                </p>
+                <h2 className="mt-3 text-4xl font-black leading-none sm:text-5xl">
+                  Cars for rent & sale
+                </h2>
+                <p className="mt-3 max-w-sm text-sm leading-6 text-white/78">
+                  Executive SUVs, airport pickups, VIP transfers, and inspected vehicles for sale.
+                </p>
+                <span className="press mt-5 inline-flex w-fit rounded-md bg-gold px-7 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_3px_0_rgba(0,0,0,0.16)]">
+                  View cars
+                </span>
+              </PromoBanner>
+
+              <PromoBanner href="/admin" image="/images/hero/kigali-apartment-hero.png" className="md:col-span-2">
+                <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
+                  For owners and agents
+                </p>
+                <h2 className="mt-3 max-w-2xl text-4xl font-black leading-none sm:text-6xl">
+                  Turn your listing into a premium digital showroom.
+                </h2>
+                <p className="mt-4 max-w-xl text-sm leading-6 text-white/78 sm:text-base">
+                  Upload images, preview cards, save drafts, and prepare property pages built for SEO and fast WhatsApp leads.
+                </p>
+                <span className="press mt-5 inline-flex w-fit rounded-md bg-gold px-7 py-3 text-xs font-black uppercase tracking-wide text-white shadow-[0_3px_0_rgba(0,0,0,0.16)]">
+                  List with Ipopo
+                </span>
+              </PromoBanner>
+            </div>
+          </Reveal>
+        </section>
 
         {/* ── Trust strip ─────────────────────────────────────────────── */}
         <section className="border-b border-line bg-surface">
@@ -149,6 +269,7 @@ export default async function Home() {
           eyebrow="Mobility marketplace"
           title="Cars for rent and sale"
           listings={cars}
+          id="cars"
         />
 
         {/* ── Platform features ───────────────────────────────────────── */}

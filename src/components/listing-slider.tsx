@@ -13,19 +13,21 @@ export function ListingSlider({
   listings,
   dark = false,
   viewAllHref = "/properties",
+  id,
 }: {
   title: string;
   eyebrow: string;
   listings: PropertyListing[];
   dark?: boolean;
   viewAllHref?: string;
+  id?: string;
 }) {
   const sliderKey = title.replace(/[^a-z0-9]/gi, "-").toLowerCase();
 
   if (!listings.length) return null;
 
   return (
-    <section className={dark ? "bg-brand-dark py-12 text-white sm:py-20" : "py-12 sm:py-20"}>
+    <section id={id} className={dark ? "bg-brand-dark py-12 text-white sm:py-20" : "py-12 sm:py-20"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-8 flex items-start justify-between gap-4 sm:items-end">

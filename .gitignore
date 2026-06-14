@@ -23,6 +23,8 @@
 # misc
 .DS_Store
 *.pem
+/logo.jfif
+/photo factory rwanda/
 
 # debug
 npm-debug.log*

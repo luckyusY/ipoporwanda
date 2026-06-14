@@ -102,6 +102,121 @@ html {
   border-color: var(--brand);
 }
 
+.press {
+  transition: transform 0.12s ease;
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+.card-swiper {
+  width: 100%;
+}
+
+.card-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.card-swiper .swiper-slide {
+  height: auto;
+}
+
+.card-swiper .swiper-slide,
+.card-swiper .swiper-slide a,
+.card-swiper .swiper-slide img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.card-swiper .swiper-button-prev,
+.card-swiper .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: var(--gold);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--line);
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+
+.card-swiper .swiper-button-prev:hover,
+.card-swiper .swiper-button-next:hover {
+  background: var(--surface-soft);
+  transform: scale(1.06);
+}
+
+.card-swiper .swiper-button-prev::after,
+.card-swiper .swiper-button-next::after {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.card-swiper .swiper-button-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .card-swiper .swiper-button-prev,
+  .card-swiper .swiper-button-next {
+    display: none;
+  }
+}
+
+.footer-acc summary::-webkit-details-marker {
+  display: none;
+}
+
+.footer-acc summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.footer-acc .footer-acc-body {
+  display: none;
+}
+
+.footer-acc[open] .footer-acc-body {
+  display: block;
+}
+
+.footer-acc .footer-acc-chevron {
+  transition: transform 0.2s ease;
+}
+
+.footer-acc[open] .footer-acc-chevron {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 768px) {
+  .footer-acc .footer-acc-body {
+    display: block;
+  }
+
+  .footer-acc summary {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+@keyframes swipe-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+.swipe-hint {
+  animation: swipe-nudge 1.5s ease-in-out infinite;
+}
+
 /* Hero — use 100svh so mobile browser chrome doesn't cut off content */
 .hero-section {
   min-height: calc(100svh - 4rem);
