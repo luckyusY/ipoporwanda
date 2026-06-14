@@ -16,6 +16,7 @@ import Image from "next/image";
 import { PropertyCard } from "@/components/property-card";
 import { HeroSlider } from "@/components/hero-slider";
 import { ListingGridSection } from "@/components/listing-grid-section";
+import { SwiperSection } from "@/components/swiper-section";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
@@ -108,7 +109,7 @@ export default async function Home() {
 
         <section className="bg-gradient-to-r from-ipopo-blue via-brand to-gold py-5">
           <div className="mx-auto max-w-7xl px-4">
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+            <SwiperSection initialView={2.2} sm={4} lg={8} gap={12} nav={false}>
               {categoryTiles.map((tile) => (
                 <Link
                   key={tile.label}
@@ -130,7 +131,7 @@ export default async function Home() {
                   </div>
                 </Link>
               ))}
-            </div>
+            </SwiperSection>
           </div>
         </section>
 
@@ -186,20 +187,16 @@ export default async function Home() {
         </section>
 
         {/* ── Trust strip ─────────────────────────────────────────────── */}
-        <section className="border-b border-line bg-surface">
+        <section className="border-b border-line bg-surface py-4 sm:py-0">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/*
-             * gap-px + bg-line creates 1-pixel dividers between cells.
-             * Single column on mobile, 2-col on sm, 4-col on lg.
-             */}
-            <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+            <SwiperSection initialView={1.1} sm={2} lg={4} gap={0} nav={false}>
               {[
                 [ShieldCheck, "Verified listings", "Every property is human-reviewed before going live."],
                 [Clock3,      "Instant contact",   "WhatsApp and call CTAs on every listing card."],
                 [TrendingUp,  "Built to scale",    "Properties, cars, SEO pages, and admin workflows."],
                 [Gem,         "Premium UX",        "Motion, optimised media, and a refined design system."],
               ].map(([Icon, title, text], i) => (
-                <div key={String(title)} className="flex gap-3.5 bg-surface px-4 py-5 sm:px-6 sm:py-7">
+                <div key={String(title)} className="flex gap-3.5 border-r border-line px-4 py-5 last:border-r-0 sm:px-6 sm:py-7">
                   <span className="mt-0.5 grid size-10 flex-none place-items-center rounded-2xl bg-brand-soft text-brand sm:size-11">
                     <Icon size={19} />
                   </span>
@@ -212,7 +209,7 @@ export default async function Home() {
                   </div>
                 </div>
               ))}
-            </div>
+            </SwiperSection>
           </div>
         </section>
 
@@ -230,12 +227,12 @@ export default async function Home() {
             </p>
           </Reveal>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <SwiperSection initialView={1.1} sm={2} lg={4} gap={16}>
             {visibleCategories.map((category, i) => {
               const Icon = category.group === "cars" ? Car : HomeIcon;
               const isPrimary = i % 2 === 0;
               return (
-                <Reveal
+                <div
                   key={category.label}
                   className={`group rounded-2xl border p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-6 ${
                     isPrimary
@@ -263,10 +260,10 @@ export default async function Home() {
                   >
                     Explore listings →
                   </p>
-                </Reveal>
+                </div>
               );
             })}
-          </div>
+          </SwiperSection>
         </section>
 
         {/* ── Listing sliders ─────────────────────────────────────────── */}
@@ -310,11 +307,11 @@ export default async function Home() {
                 Add your property
               </Link>
             </Reveal>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <SwiperSection initialView={1.1} sm={2} lg={4} gap={20}>
               {properties.slice(0, 8).map((listing, index) => (
                 <PropertyCard key={`spotlight-${listing.id}`} listing={listing} priority={index < 2} />
               ))}
-            </div>
+            </SwiperSection>
           </div>
         </section>
 
@@ -339,23 +336,23 @@ export default async function Home() {
               </Link>
             </Reveal>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <SwiperSection initialView={1.1} sm={2} gap={16}>
               {[
                 [Building2, "Real estate CRM-ready", "Draft listings, Cloudinary image upload, MongoDB storage, and schema room for future owner accounts."],
                 [Sparkles,  "Premium storytelling",  "Hero slides, image carousels, trust panels, location blocks, and conversion-focused CTAs."],
                 [MapPin,    "SEO location strategy", "Kigali neighborhood surfaces can grow into location-specific search pages."],
                 [BadgeCheck,"Vercel performance",    "Static shells, ISR cache, next/image, Geist fonts, and compact client components."],
               ].map(([Icon, title, text]) => (
-                <Reveal
+                <div
                   key={String(title)}
                   className="rounded-2xl border border-line bg-surface p-5 shadow-sm"
                 >
                   <Icon className="mb-4 text-brand" size={24} />
                   <h3 className="font-bold">{String(title)}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted">{String(text)}</p>
-                </Reveal>
+                </div>
               ))}
-            </div>
+            </SwiperSection>
           </div>
         </section>
 
@@ -370,7 +367,7 @@ export default async function Home() {
             </h2>
           </Reveal>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <SwiperSection initialView={1.2} sm={2} lg={3} gap={12}>
             {[
               "Kibagabaga",
               "Kacyiru",
@@ -382,7 +379,7 @@ export default async function Home() {
               "Kiyovu",
               "Remera",
             ].map((location, i) => (
-              <Reveal
+              <div
                 key={location}
                 className="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand/25 hover:shadow-lg sm:p-5"
               >
@@ -401,9 +398,9 @@ export default async function Home() {
                     →
                   </span>
                 </div>
-              </Reveal>
+              </div>
             ))}
-          </div>
+          </SwiperSection>
         </section>
 
         {/* ── CTA ─────────────────────────────────────────────────────── */}
