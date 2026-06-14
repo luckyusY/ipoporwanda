@@ -96,7 +96,7 @@ export function SiteFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-7 md:flex-row md:items-center md:justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.jfif" alt="Ipopo Rwanda" width={80} height={80} className="size-16 rounded-full border border-white/20 object-cover" />
+            <Image src="/logo.jpg" alt="Ipopo Rwanda" width={80} height={80} className="size-16 rounded-full border border-white/20 object-cover" />
             <div>
               <p className="font-black">Ipopo Rwanda</p>
               <p className="text-xs text-white/55">Real estate marketplace</p>

@@ -23,14 +23,14 @@ import { categoryConfigs } from "@/lib/sample-data";
 import { getListings } from "@/lib/listings";
 
 const categoryTiles = [
-  { label: "Apartments", href: "/properties", image: "/images/hero/kigali-apartment-hero.png" },
-  { label: "Luxury villas", href: "/properties", image: "/images/hero/kigali-villa-hero.png" },
-  { label: "Land & plots", href: "/properties", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=75" },
-  { label: "Commercial", href: "/properties", image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=75" },
+  { label: "Apartments", href: "/properties", image: "/images/properties/prop-02.jpg" },
+  { label: "Luxury villas", href: "/properties", image: "/images/properties/prop-04.jpg" },
+  { label: "Land & plots", href: "/properties", image: "/images/properties/prop-12.jpg" },
+  { label: "Commercial", href: "/properties", image: "/images/properties/prop-08.jpg" },
   { label: "Cars for rent", href: "/#cars", image: "/images/hero/kigali-car-hero.png" },
   { label: "Cars for sale", href: "/#cars", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=75" },
-  { label: "Kacyiru", href: "/properties", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=75" },
-  { label: "Nyarutarama", href: "/properties", image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?auto=format&fit=crop&w=900&q=75" },
+  { label: "Kacyiru", href: "/properties", image: "/images/properties/prop-13.jpg" },
+  { label: "Nyarutarama", href: "/properties", image: "/images/properties/prop-15.jpg" },
 ];
 
 function PromoBanner({
@@ -47,18 +47,31 @@ function PromoBanner({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className={`group relative min-h-[230px] overflow-hidden bg-brand-dark sm:min-h-[260px] md:min-h-[320px] ${className ?? ""}`}>
-      <Image
-        src={image}
-        alt=""
-        fill
-        priority={priority}
-        sizes="(min-width: 768px) 50vw, 100vw"
-        className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.025]"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,63,37,0.92),rgba(0,107,53,0.7),rgba(22,0,255,0.18))]" />
-      <div className="absolute inset-y-0 left-0 flex w-full max-w-[560px] flex-col justify-center px-5 text-white sm:w-[82%] sm:px-10 md:w-[76%]">
+    <Link
+      href={href}
+      className={`group relative flex min-h-[250px] overflow-hidden bg-brand-dark sm:min-h-[300px] md:min-h-[340px] ${className ?? ""}`}
+    >
+      {/* Mobile: image fills behind text at reduced opacity */}
+      <div className="absolute inset-0 sm:hidden">
+        <Image src={image} alt="" fill sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-brand-dark/60" />
+      </div>
+
+      {/* Text side — solid background, always readable */}
+      <div className="relative z-10 flex flex-col justify-center px-6 py-8 text-white sm:w-[44%] sm:shrink-0 sm:bg-brand-dark sm:px-10">
         {children}
+      </div>
+
+      {/* Image side — clean, no overlay, desktop only */}
+      <div className="relative hidden flex-1 sm:block">
+        <Image
+          src={image}
+          alt=""
+          fill
+          priority={priority}
+          sizes="(min-width: 768px) 35vw, 0vw"
+          className="object-cover transition duration-500 group-hover:scale-[1.025]"
+        />
       </div>
     </Link>
   );
@@ -107,7 +120,7 @@ export default async function Home() {
                     alt={tile.label}
                     fill
                     sizes="(min-width: 1024px) 180px, (min-width: 640px) 25vw, 50vw"
-                    className="object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
+                    className="object-cover transition group-hover:scale-105"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-brand-dark/82 px-3 py-3">
                     <p className="text-xs font-black text-white sm:text-sm">{tile.label}</p>
@@ -124,7 +137,7 @@ export default async function Home() {
         <section className="border-y-[3px] border-gold bg-white">
           <Reveal>
             <div className="mx-auto grid max-w-[1368px] gap-[3px] bg-gold md:grid-cols-2">
-              <PromoBanner href="/properties" image="/images/hero/kigali-villa-hero.png" priority>
+              <PromoBanner href="/properties" image="/images/properties/prop-03.jpg" priority>
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   Ipopo exclusive
                 </p>
@@ -154,7 +167,7 @@ export default async function Home() {
                 </span>
               </PromoBanner>
 
-              <PromoBanner href="/admin" image="/images/hero/kigali-apartment-hero.png" className="md:col-span-2">
+              <PromoBanner href="/admin" image="/images/properties/prop-07.jpg" className="md:col-span-2">
                 <p className="text-xs font-black uppercase tracking-[0.24em] text-gold">
                   For owners and agents
                 </p>

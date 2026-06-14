@@ -57,8 +57,7 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
                   sizes="100vw"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/88 via-brand-dark/32 to-transparent sm:bg-[linear-gradient(90deg,rgba(0,63,37,0.9),rgba(0,63,37,0.45),rgba(0,63,37,0.08))]" />
-                <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-brand-dark to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent sm:bg-[linear-gradient(90deg,rgba(0,0,0,0.62),rgba(0,0,0,0.18),transparent)]" />
 
                 <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 sm:px-6 sm:py-14 lg:grid-cols-[minmax(0,0.9fr)_420px] lg:items-end lg:px-8 lg:py-16">
                   <div className="max-w-3xl">
