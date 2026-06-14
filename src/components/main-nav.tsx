@@ -54,7 +54,7 @@ export function MainNav() {
   return (
     <nav
       onMouseLeave={() => setOpenMenu(null)}
-      className="relative hidden border-y border-gold/35 bg-brand-dark text-white md:block"
+      className="relative hidden border-y border-brand/15 bg-brand text-white md:block"
     >
       <div className="mx-auto flex max-w-[1440px] items-center gap-2 px-4 2xl:px-6">
         <Link

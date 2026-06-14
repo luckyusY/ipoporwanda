@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Bath,
   BedDouble,
@@ -10,7 +11,6 @@ import {
   Ruler,
   ShieldCheck,
 } from "lucide-react";
-import { CardImageCarousel } from "@/components/card-image-carousel";
 import { formatMoney, toWhatsappUrl } from "@/lib/format";
 import type { PropertyListing } from "@/lib/types";
 
@@ -28,10 +28,13 @@ export function PropertyCard({
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-sm transition duration-300 hover:-translate-y-1 hover:border-brand/20 hover:shadow-xl">
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-soft">
-        <CardImageCarousel
-          images={listing.images}
+        <Image
+          src={listing.images[0]}
           alt={listing.title}
+          fill
           priority={priority}
+          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition duration-500 group-hover:scale-[1.035]"
         />
 
         {/* Bottom scrim so price text is always legible */}
@@ -42,12 +45,18 @@ export function PropertyCard({
           <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-brand-dark shadow-sm">
             For {listing.purpose}
           </span>
-          {listing.featured ? (
+        {listing.featured ? (
             <span className="inline-flex items-center gap-1 rounded-full bg-gold px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-white shadow-sm">
               <ShieldCheck size={11} strokeWidth={2.5} /> Verified
             </span>
           ) : null}
         </div>
+
+        {listing.images.length > 1 ? (
+          <span className="absolute right-3 top-3 z-20 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-black text-brand-dark shadow-sm">
+            {listing.images.length} photos
+          </span>
+        ) : null}
 
         {/* Price — bottom left, always visible */}
         <p className="absolute bottom-3 left-3 z-20 text-[17px] font-black text-white drop-shadow">

@@ -68,7 +68,7 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div className="bg-[#050505] text-white">
+      <div className="bg-white text-foreground">
         <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-2 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-4 sm:px-4 2xl:px-6">
           <Link href="/" className="flex min-w-0 shrink items-center gap-2" aria-label="Ipopo Rwanda home">
             <Image
@@ -77,7 +77,7 @@ export function SiteHeader() {
               width={80}
               height={80}
               priority
-              className="size-11 shrink-0 rounded-xl border border-white/15 object-cover sm:size-12"
+              className="size-11 shrink-0 rounded-xl border border-line object-cover sm:size-12"
             />
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-black sm:text-base">Ipopo Rwanda</span>
@@ -104,7 +104,7 @@ export function SiteHeader() {
           </form>
 
           <div className="flex shrink-0 items-center gap-2 sm:hidden">
-            <a href={`tel:${phoneTel}`} aria-label="Call Ipopo Rwanda" className="grid size-10 place-items-center rounded-full bg-white/10">
+            <a href={`tel:${phoneTel}`} aria-label="Call Ipopo Rwanda" className="grid size-10 place-items-center rounded-full bg-brand-soft text-brand">
               <Phone aria-hidden size={22} />
             </a>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Ipopo Rwanda" className="grid size-10 place-items-center rounded-full bg-[#16a34a]">
@@ -117,13 +117,13 @@ export function SiteHeader() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-sm font-bold hover:bg-white hover:text-[#15110a]"
+              className="inline-flex h-10 items-center gap-2 rounded-full border border-brand/15 px-4 text-sm font-bold text-brand hover:bg-brand-soft"
             >
               <MessageCircle size={16} /> WhatsApp
             </a>
             <Link
               href="/admin"
-              className="inline-flex h-10 items-center gap-2 rounded-full bg-gold px-4 text-sm font-black text-white"
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-ipopo-blue px-4 text-sm font-black text-white"
             >
               <PlusCircle size={16} /> List
             </Link>

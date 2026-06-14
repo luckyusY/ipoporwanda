@@ -15,11 +15,10 @@ import {
 import Image from "next/image";
 import { PropertyCard } from "@/components/property-card";
 import { HeroSlider } from "@/components/hero-slider";
-import { ListingSlider } from "@/components/listing-slider";
+import { ListingGridSection } from "@/components/listing-grid-section";
 import { Reveal } from "@/components/reveal";
 import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
-import { CardSwiper } from "@/components/card-swiper";
 import { categoryConfigs } from "@/lib/sample-data";
 import { getListings } from "@/lib/listings";
 
@@ -46,7 +45,7 @@ function PromoBanner({
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href} className={`group relative min-h-[230px] overflow-hidden bg-black sm:min-h-[260px] md:min-h-[320px] ${className ?? ""}`}>
+    <Link href={href} className={`group relative min-h-[230px] overflow-hidden bg-brand-dark sm:min-h-[260px] md:min-h-[320px] ${className ?? ""}`}>
       <Image
         src={image}
         alt=""
@@ -54,7 +53,7 @@ function PromoBanner({
         sizes="(min-width: 768px) 50vw, 100vw"
         className="object-cover opacity-90 transition duration-500 group-hover:scale-[1.025]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,5,5,0.9),rgba(21,17,10,0.68),rgba(21,17,10,0.18))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,63,37,0.92),rgba(0,107,53,0.7),rgba(22,0,255,0.18))]" />
       <div className="absolute inset-y-0 left-0 flex w-full max-w-[560px] flex-col justify-center px-5 text-white sm:w-[82%] sm:px-10 md:w-[76%]">
         {children}
       </div>
@@ -91,14 +90,14 @@ export default async function Home() {
       <main>
         <HeroSlider listings={heroListings.length ? heroListings : listings} />
 
-        <section className="bg-[linear-gradient(90deg,#050505,#15110a,#050505)] py-5">
+        <section className="bg-gradient-to-r from-ipopo-blue via-brand to-gold py-5">
           <div className="mx-auto max-w-7xl px-4">
-            <CardSwiper>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
               {categoryTiles.map((tile) => (
                 <Link
                   key={tile.label}
                   href={tile.href}
-                  className="group relative block h-36 w-36 overflow-hidden rounded-md bg-black sm:h-44 sm:w-48"
+                  className="group relative block h-32 overflow-hidden rounded-lg bg-brand-dark sm:h-36"
                 >
                   <Image
                     src={tile.image}
@@ -107,7 +106,7 @@ export default async function Home() {
                     sizes="192px"
                     className="object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-black/72 px-3 py-3">
+                  <div className="absolute inset-x-0 bottom-0 bg-brand-dark/82 px-3 py-3">
                     <p className="text-xs font-black text-white sm:text-sm">{tile.label}</p>
                     <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-gold sm:text-[11px]">
                       Explore now
@@ -115,7 +114,7 @@ export default async function Home() {
                   </div>
                 </Link>
               ))}
-            </CardSwiper>
+            </div>
           </div>
         </section>
 
@@ -255,22 +254,23 @@ export default async function Home() {
         </section>
 
         {/* ── Listing sliders ─────────────────────────────────────────── */}
-        <ListingSlider
+        <ListingGridSection
           eyebrow="Homes, villas, apartments"
           title="Properties for rent"
           listings={rentListings}
         />
-        <ListingSlider
+        <ListingGridSection
           eyebrow="Investment and ownership"
           title="Properties for sale"
           listings={saleListings}
           dark
         />
-        <ListingSlider
+        <ListingGridSection
           eyebrow="Mobility marketplace"
           title="Cars for rent and sale"
           listings={cars}
           id="cars"
+          limit={4}
         />
 
         <section className="border-y border-line bg-surface">

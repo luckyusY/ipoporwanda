@@ -55,8 +55,8 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
                 />
 
                 {/* Gradient — bottom-heavy on mobile, side-heavy on desktop */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071c17]/95 via-[#071c17]/55 to-[#071c17]/20 sm:bg-[linear-gradient(90deg,rgba(7,28,23,0.94),rgba(7,28,23,0.64),rgba(7,28,23,0.2))]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(199,147,62,0.22),transparent_30rem)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/58 to-ipopo-blue/18 sm:bg-[linear-gradient(90deg,rgba(0,63,37,0.94),rgba(0,107,53,0.58),rgba(22,0,255,0.18))]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(245,196,0,0.24),transparent_30rem)]" />
 
                 {/* Content grid */}
                 <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:grid lg:grid-cols-[1fr_0.64fr] lg:items-center lg:gap-10 lg:px-8 lg:py-20">
@@ -145,14 +145,14 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
         <div className="pointer-events-auto flex gap-2">
           <button
             type="button"
-            className="hero-prev grid size-11 place-items-center rounded-full border border-white/25 bg-black/25 backdrop-blur transition hover:bg-white hover:text-brand-dark"
+            className="hero-prev grid size-11 place-items-center rounded-full border border-white/25 bg-brand-dark/45 backdrop-blur transition hover:bg-white hover:text-brand-dark"
             aria-label="Previous slide"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             type="button"
-            className="hero-next grid size-11 place-items-center rounded-full border border-white/25 bg-black/25 backdrop-blur transition hover:bg-white hover:text-brand-dark"
+            className="hero-next grid size-11 place-items-center rounded-full border border-white/25 bg-brand-dark/45 backdrop-blur transition hover:bg-white hover:text-brand-dark"
             aria-label="Next slide"
           >
             <ChevronRight size={20} />
