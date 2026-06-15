@@ -6,6 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { getListings } from "@/lib/listings";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Properties for Rent and Sale in Kigali",
   description:

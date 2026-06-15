@@ -23,7 +23,7 @@ export function ListingGridSection({
   const shown = sectionListings.length;
 
   return (
-    <section id={id} className={dark ? "bg-foreground py-12 text-white sm:py-20" : "py-12 sm:py-20"}>
+    <section id={id} className={dark ? "content-auto bg-foreground py-12 text-white sm:py-20" : "content-auto py-12 sm:py-20"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10">
           <div>

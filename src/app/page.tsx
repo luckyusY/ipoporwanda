@@ -9,6 +9,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { getListings } from "@/lib/listings";
 
+export const revalidate = 300;
+
 const categoryTiles = [
   { label: "Apartments", href: "/properties", image: "/images/properties/prop-02.jpg" },
   { label: "Luxury villas", href: "/properties", image: "/images/properties/prop-04.jpg" },
@@ -193,7 +195,7 @@ export default async function Home() {
           id="cars"
         />
 
-        <section className="border-y border-line bg-surface">
+        <section className="content-auto border-y border-line bg-surface">
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
             <Reveal className="mb-8 flex flex-col justify-between gap-4 sm:mb-10 lg:flex-row lg:items-end">
               <div>

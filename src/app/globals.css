@@ -39,6 +39,7 @@ body {
   font-family: var(--font-igiti-sans), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+  -webkit-tap-highlight-color: rgba(0, 153, 214, 0.16);
 }
 
 main h1,
@@ -128,6 +129,16 @@ html {
 
 .press:active {
   transform: scale(0.97);
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .skeleton-shimmer {
@@ -229,13 +240,33 @@ html {
 
 /* Hero — use 100svh so mobile browser chrome doesn't cut off content */
 .hero-section {
-  min-height: calc(100svh - 4rem);
+  min-height: min(680px, calc(100svh - 4.25rem));
 }
 
-/* Fluid hero heading: never smaller than 1.9rem, grows with viewport */
 .hero-title {
-  font-size: clamp(1.9rem, 5.5vw, 4.5rem);
-  line-height: 0.98;
+  font-size: clamp(1.85rem, 8vw, 2.85rem);
+  line-height: 1.02;
+}
+
+.hero-image {
+  transform: scale(1.035);
+  transition: transform 6.5s ease-out;
+  will-change: transform;
+}
+
+.swiper-slide-active .hero-image {
+  transform: scale(1);
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    min-height: calc(100svh - 4rem);
+  }
+
+  .hero-title {
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    line-height: 0.98;
+  }
 }
 
 /* Gradient text */
@@ -316,6 +347,10 @@ html {
   .whatsapp-pulse,
   .skeleton-shimmer::after {
     animation: none;
+  }
+
+  .hero-section img {
+    transition: none !important;
   }
 }
 

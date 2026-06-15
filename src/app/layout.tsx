@@ -14,17 +14,23 @@ import "./globals.css";
 const inter = Inter({
   variable: "--font-igiti-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const playfair = Playfair_Display({
   variable: "--font-igiti-serif",
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
