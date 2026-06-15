@@ -105,10 +105,10 @@ export default async function Home() {
               <div className="mb-6 flex items-end justify-between gap-4">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
-                    Top locations
+                    Kigali neighborhoods
                   </p>
                   <h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
-                    Designed neighborhood guides for Kigali buyers.
+                    Where do you want to live?
                   </h2>
                 </div>
                 <Link
