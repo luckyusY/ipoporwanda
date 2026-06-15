@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle, Phone, PlusCircle, Search } from "lucide-react";
+import { MessageCircle, Phone, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -45,10 +45,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="bg-gold px-2 py-1 text-center text-[10px] font-black leading-[16px] text-foreground sm:px-4 sm:text-[11px] sm:leading-[18px]">
-        <span className="text-brand-dark">Ipopo Rwanda</span> — premium properties &amp; cars in Kigali.{" "}
-        <Link href="/admin" className="text-brand-dark underline underline-offset-2 hover:opacity-70">
-          LIST NOW →
-        </Link>
+        <span className="text-brand-dark">Ipopo Rwanda</span> — premium properties &amp; cars in Kigali.
       </div>
 
       <div className="hidden border-y border-gold/25 bg-brand-dark text-white sm:block">
@@ -56,7 +53,7 @@ export function SiteHeader() {
           <div className="hidden gap-5 md:flex">
             <Link href="/properties">Verified Listings</Link>
             <Link href="/#locations">Kigali Locations</Link>
-            <Link href="/admin">Owner Studio</Link>
+            <Link href="/#cars">Cars & Mobility</Link>
           </div>
           <div className="ml-auto flex items-center gap-4">
             <a href={`tel:${phoneTel}`}>{phoneDisplay}</a>
@@ -152,12 +149,6 @@ export function SiteHeader() {
             >
               <MessageCircle size={16} /> WhatsApp
             </a>
-            <Link
-              href="/admin"
-              className="inline-flex h-10 items-center gap-2 rounded-full bg-gold px-4 text-sm font-black text-foreground transition hover:bg-[#c9a200]"
-            >
-              <PlusCircle size={16} /> List
-            </Link>
           </div>
         </div>
       </div>

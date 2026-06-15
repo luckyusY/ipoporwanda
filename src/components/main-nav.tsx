@@ -33,17 +33,7 @@ const departments = [
       ["Luxury areas", "Nyarutarama", "Kiyovu", "Kimihurura"],
       ["Growth areas", "Rebero", "Kanombe", "Remera"],
     ],
-    promo: "Turn every major Kigali neighborhood into a high-intent SEO landing page.",
-  },
-  {
-    label: "Owners",
-    href: "/admin",
-    columns: [
-      ["List property", "Upload images", "Preview cards", "Save drafts"],
-      ["Marketing", "SEO metadata", "WhatsApp leads", "Verified badges"],
-      ["Admin", "MongoDB", "Cloudinary", "Vercel"],
-    ],
-    promo: "A listing studio for serious owners and agents who want premium presentation.",
+    promo: "Compare Kigali neighborhoods by lifestyle, access, and available listings.",
   },
 ];
 
@@ -82,7 +72,7 @@ export function MainNav() {
         <div className="ml-auto hidden items-center gap-5 text-sm font-semibold lg:flex">
           <Link href="/properties">Top listings</Link>
           <Link href="/#locations">Kigali areas</Link>
-          <Link href="/admin">List now</Link>
+          <Link href="/#cars">Cars</Link>
         </div>
       </div>
 

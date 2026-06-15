@@ -66,7 +66,7 @@ export function ListingForm() {
 
     if (response.ok) {
       setState("success");
-      setMessage("Property saved as a draft. Publish it from the database/admin workflow when ready.");
+      setMessage("Property saved as a draft for review.");
       setPreviews([]);
       return;
     }

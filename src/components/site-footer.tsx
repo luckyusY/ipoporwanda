@@ -64,7 +64,6 @@ export function SiteFooter() {
                 ["All properties", "/properties"],
                 ["All cars", "/#cars"],
                 ["Locations", "/#locations"],
-                ["Owner studio", "/admin"],
               ].map(([label, href]) => (
                 <li key={String(label)}>
                   <Link href={String(href)} className="transition hover:text-white">
@@ -80,10 +79,9 @@ export function SiteFooter() {
             <h3 className="mb-5 font-black">Interact with us</h3>
             <ul className="space-y-3 text-sm text-white/60">
               {[
-                ["List a property", "/admin"],
-                ["Add a car", "/admin"],
                 ["WhatsApp us", whatsappUrl],
                 ["Contact us", "/#contact"],
+                ["Call us", "tel:+250788334207"],
               ].map(([label, href]) => (
                 <li key={String(label)}>
                   <Link href={String(href)} className="transition hover:text-white">

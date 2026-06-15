@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 
 export default function AdminPage() {
   const cards = [
-    ["Drafts", "Save listings privately before publishing."],
-    ["Cloudinary", "Uploaded images are optimized from Cloudinary."],
-    ["MongoDB", "Listings are stored in the Vercel server route."],
-    ["SEO", "Published listings get detail pages and metadata."],
+    ["Draft review", "Prepare a listing privately before it goes live."],
+    ["Image previews", "Check every uploaded photo before saving the listing."],
+    ["Contact details", "Keep call and WhatsApp information clear for enquiries."],
+    ["Listing quality", "Write clean descriptions, prices, features, and locations."],
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function AdminPage() {
           <p className="text-sm font-bold uppercase tracking-[0.22em] text-brand">Admin</p>
           <h1 className="mt-3 text-4xl font-black tracking-tight">Owner listing studio</h1>
           <p className="mt-3 max-w-2xl text-muted">
-            Add property details, preview images instantly, and save a draft. Public publishing can be controlled from the database or a fuller auth dashboard later.
+            Add property details, preview images instantly, and save a clean listing draft for review before it appears publicly.
           </p>
         </div>
 

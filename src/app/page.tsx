@@ -204,14 +204,14 @@ export default async function Home() {
                   More properties ready for enquiries.
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">
-                  A denser homepage section for owners and agents who want their listings visible fast.
+                  A denser homepage section for visitors who want more verified options without digging.
                 </p>
               </div>
               <Link
-                href="/admin"
+                href="/properties"
                 className="inline-flex min-h-[48px] w-full items-center justify-center rounded-full bg-brand px-6 text-sm font-bold text-white shadow-sm shadow-brand/20 transition hover:bg-brand-dark sm:w-fit"
               >
-                Add your property
+                View all properties
               </Link>
             </Reveal>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

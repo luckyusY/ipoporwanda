@@ -10,8 +10,6 @@ import {
   MapPin,
   Menu,
   Phone,
-  PlusCircle,
-  Search,
   Sparkles,
   X,
   type LucideIcon,
@@ -28,7 +26,7 @@ type MenuItem = {
   children?: MenuItem[];
 };
 
-const tabs = ["Properties", "Locations", "Cars", "Owners"] as const;
+const tabs = ["Properties", "Locations", "Cars"] as const;
 
 const propertyRows: MenuItem[] = [
   {
@@ -73,17 +71,10 @@ const carRows: MenuItem[] = [
   { label: "VIP transfer", href: "/#cars", icon: Sparkles, image: "/images/hero/kigali-car-hero.png" },
 ];
 
-const ownerRows: MenuItem[] = [
-  { label: "List a property", href: "/admin", icon: PlusCircle, image: "/images/properties/prop-04.jpg" },
-  { label: "Upload images", href: "/admin", icon: Sparkles, image: "/images/properties/prop-02.jpg" },
-  { label: "Preview listing cards", href: "/admin", icon: Search, image: "/images/properties/prop-13.jpg" },
-];
-
 const rowsByTab = {
   Properties: propertyRows,
   Locations: locationRows,
   Cars: carRows,
-  Owners: ownerRows,
 };
 
 export function MobileIpopoMenu() {
@@ -138,10 +129,10 @@ export function MobileIpopoMenu() {
             <MapPin size={22} />
             Areas
           </Link>
-          <Link href="/admin" className="grid place-items-center gap-0.5 py-1.5">
-            <PlusCircle size={22} />
-            Admin
-          </Link>
+          <a href="tel:+250788334207" className="grid place-items-center gap-0.5 py-1.5">
+            <Phone size={22} />
+            Call
+          </a>
         </div>
       </div>
 
