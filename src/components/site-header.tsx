@@ -71,16 +71,14 @@ export function SiteHeader() {
       <div className="bg-white text-foreground">
         <div className="mx-auto grid w-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-2 px-3 py-2 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-4 sm:px-4 2xl:px-6">
           <Link href="/" className="flex min-w-0 shrink items-center gap-2" aria-label="Ipopo Rwanda home">
-            <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-brand-dark p-1 sm:size-14 sm:p-1.5">
-              <Image
-                src="/logo.png"
-                alt="Ipopo Rwanda"
-                width={80}
-                height={80}
-                priority
-                className="size-full object-contain"
-              />
-            </span>
+            <Image
+              src="/logo.png"
+              alt="Ipopo Rwanda"
+              width={64}
+              height={96}
+              priority
+              className="h-12 w-auto shrink-0 object-contain sm:h-14"
+            />
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-black sm:text-base">Ipopo Rwanda</span>
               <span className="block truncate text-[9px] font-bold uppercase tracking-wide text-gold sm:text-[10px]">

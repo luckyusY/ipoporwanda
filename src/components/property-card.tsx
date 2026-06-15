@@ -1,14 +1,13 @@
 import Link from "next/link";
-import {
-  Bath,
-  BedDouble,
-  Car,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Ruler,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight";
+import { Bathtub } from "@phosphor-icons/react/dist/ssr/Bathtub";
+import { Bed } from "@phosphor-icons/react/dist/ssr/Bed";
+import { CarProfile } from "@phosphor-icons/react/dist/ssr/CarProfile";
+import { MapPin } from "@phosphor-icons/react/dist/ssr/MapPin";
+import { PhoneCall } from "@phosphor-icons/react/dist/ssr/PhoneCall";
+import { Ruler } from "@phosphor-icons/react/dist/ssr/Ruler";
+import { SealCheck } from "@phosphor-icons/react/dist/ssr/SealCheck";
+import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
 import { formatMoney, toWhatsappUrl } from "@/lib/format";
 import type { PropertyListing } from "@/lib/types";
 import { CardImageSlider } from "@/components/card-image-slider";
@@ -29,7 +28,7 @@ export function PropertyCard({
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
 
       {/* ── Image ─────────────────────────── */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-surface-soft">
+      <div className="relative h-56 overflow-hidden bg-surface-soft sm:h-64 lg:h-60 xl:h-64">
         <CardImageSlider
           images={listing.images}
           title={listing.title}
@@ -48,7 +47,7 @@ export function PropertyCard({
         {/* Verified — top right */}
         {listing.featured && (
           <span className="absolute right-3 top-3 z-20 inline-flex items-center gap-1 rounded-md bg-white/95 px-2.5 py-1 text-[10px] font-black text-foreground shadow-sm">
-            <ShieldCheck size={11} strokeWidth={2.5} className="text-brand" />
+            <SealCheck size={13} weight="fill" className="text-brand" />
             Verified
           </span>
         )}
@@ -65,9 +64,9 @@ export function PropertyCard({
           </p>
           <Link
             href={href}
-            className="rounded-full bg-white/12 px-2.5 py-1 text-[10px] font-bold text-white/70 transition hover:bg-white/20 hover:text-white"
+            className="inline-flex items-center gap-1 rounded-full bg-white/12 px-2.5 py-1 text-[10px] font-bold text-white/70 transition hover:bg-white/20 hover:text-white"
           >
-            View →
+            View <ArrowRight size={11} weight="bold" />
           </Link>
         </div>
       </div>
@@ -77,7 +76,7 @@ export function PropertyCard({
 
         {/* Location */}
         <p className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-muted">
-          <MapPin size={12} className="text-brand" strokeWidth={2.5} />
+          <MapPin size={14} weight="duotone" className="text-brand" />
           {listing.location}, {listing.district}
         </p>
 
@@ -92,7 +91,7 @@ export function PropertyCard({
         <div className="flex items-center text-xs font-semibold text-muted">
           {isCar && !listing.bedrooms ? (
             <span className="inline-flex items-center gap-1.5">
-              <Car size={13} />
+              <CarProfile size={15} weight="duotone" />
               Premium vehicle
             </span>
           ) : (
@@ -100,7 +99,7 @@ export function PropertyCard({
               {listing.bedrooms && (
                 <>
                   <span className="inline-flex items-center gap-1.5">
-                    <BedDouble size={13} />
+                    <Bed size={15} weight="duotone" />
                     {listing.bedrooms} bed
                   </span>
                   {(listing.bathrooms || listing.areaSqm) && (
@@ -111,7 +110,7 @@ export function PropertyCard({
               {listing.bathrooms && (
                 <>
                   <span className="inline-flex items-center gap-1.5">
-                    <Bath size={13} />
+                    <Bathtub size={15} weight="duotone" />
                     {listing.bathrooms} bath
                   </span>
                   {listing.areaSqm && <span className="mx-2.5 text-line">·</span>}
@@ -119,7 +118,7 @@ export function PropertyCard({
               )}
               {listing.areaSqm && (
                 <span className="inline-flex items-center gap-1.5">
-                  <Ruler size={13} />
+                  <Ruler size={15} weight="duotone" />
                   {listing.areaSqm} m²
                 </span>
               )}
@@ -154,14 +153,14 @@ export function PropertyCard({
             rel="noreferrer"
             className="flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full bg-[#16a34a] px-3 text-xs font-bold text-white transition hover:bg-[#15803d]"
           >
-            <MessageCircle size={14} strokeWidth={2.5} aria-hidden />
+            <WhatsappLogo size={17} weight="fill" aria-hidden />
             WhatsApp
           </a>
           <a
             href={`tel:${listing.phone}`}
             className="flex min-h-[44px] w-[40%] items-center justify-center gap-1.5 rounded-full border border-line text-xs font-bold text-foreground transition hover:border-brand hover:text-brand"
           >
-            <Phone size={14} strokeWidth={2.5} aria-hidden />
+            <PhoneCall size={16} weight="duotone" aria-hidden />
             Call
           </a>
         </div>
