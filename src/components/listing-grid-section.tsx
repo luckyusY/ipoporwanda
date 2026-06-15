@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { PropertyCard } from "@/components/property-card";
-import { SwiperSection } from "@/components/swiper-section";
 import type { PropertyListing } from "@/lib/types";
 
 export function ListingGridSection({
@@ -9,7 +8,7 @@ export function ListingGridSection({
   listings,
   dark = false,
   id,
-  limit = 8,
+  limit,
 }: {
   eyebrow: string;
   title: string;
@@ -20,7 +19,8 @@ export function ListingGridSection({
 }) {
   if (!listings.length) return null;
 
-  const shown = Math.min(listings.length, limit);
+  const sectionListings = limit ? listings.slice(0, limit) : listings;
+  const shown = sectionListings.length;
 
   return (
     <section id={id} className={dark ? "bg-foreground py-12 text-white sm:py-20" : "py-12 sm:py-20"}>
@@ -45,11 +45,11 @@ export function ListingGridSection({
           </Link>
         </div>
 
-        <SwiperSection initialView={1.1} sm={2} lg={4} gap={20} dark={dark}>
-          {listings.slice(0, limit).map((listing, index) => (
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {sectionListings.map((listing, index) => (
             <PropertyCard key={listing.id} listing={listing} priority={index < 2} />
           ))}
-        </SwiperSection>
+        </div>
       </div>
     </section>
   );

@@ -236,7 +236,7 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
       </div>
 
       {/* ── Location quick-chips ──────────────────────────────────────── */}
-      <div className="mb-7 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+      <div className="mb-7 flex flex-wrap items-center gap-2">
         <MapPin size={13} className="shrink-0 text-brand" strokeWidth={2.5} />
         <button
           type="button"

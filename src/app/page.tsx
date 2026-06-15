@@ -160,7 +160,6 @@ export default async function Home() {
           title="Cars for rent and sale"
           listings={cars}
           id="cars"
-          limit={4}
         />
 
         <section className="border-y border-line bg-surface">
@@ -184,11 +183,11 @@ export default async function Home() {
                 Add your property
               </Link>
             </Reveal>
-            <SwiperSection initialView={1.1} sm={2} lg={4} gap={20}>
-              {properties.slice(0, 8).map((listing, index) => (
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {properties.map((listing, index) => (
                 <PropertyCard key={`spotlight-${listing.id}`} listing={listing} priority={index < 2} />
               ))}
-            </SwiperSection>
+            </div>
           </div>
         </section>
 
