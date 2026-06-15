@@ -76,7 +76,8 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
                 sizes="100vw"
                 className="hero-image object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/38 to-black/18 md:bg-black/38" />
+              {/* subtle bottom scrim so white text stays readable */}
+              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 to-transparent" />
 
               <div className="relative z-10 w-full max-w-4xl md:px-0">
                 <div
@@ -117,10 +118,7 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
                 </div>
               </div>
 
-              <div
-                data-ha
-                className="absolute bottom-16 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2.5 md:flex"
-              >
+              <div className="absolute bottom-16 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2.5 md:flex">
                 <span className="text-[10px] font-black uppercase tracking-[0.24em] text-white/75">
                   Explore Properties
                 </span>
