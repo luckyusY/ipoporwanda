@@ -162,11 +162,8 @@ export default async function Home() {
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 92vw"
                       className="object-cover transition duration-500 group-hover:scale-[1.035]"
                     />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/20 to-transparent p-4">
-                      <p className="text-lg font-black text-white">{location.label}</p>
-                      <p className="mt-0.5 text-[11px] font-black uppercase tracking-wide text-gold">
-                        Explore properties
-                      </p>
+                    <div className="absolute bottom-3 right-3 rounded-full bg-black/70 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-gold backdrop-blur-sm transition group-hover:bg-brand-dark">
+                      View listings
                     </div>
                   </Link>
                 ))}
