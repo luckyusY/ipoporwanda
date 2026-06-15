@@ -232,11 +232,70 @@ html {
   background-clip: text;
 }
 
+.ipopo-title {
+  display: inline-block;
+  font-family: var(--font-igiti-serif), Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.04;
+  background: linear-gradient(90deg, #0099d6 0 38%, #f5c400 38% 63%, #0aa44b 63% 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ipopo-title-on-dark {
+  filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.22));
+}
+
+@supports not (-webkit-background-clip: text) {
+  .ipopo-title {
+    color: var(--brand);
+  }
+}
+
 /* Subtle grid pattern for dark sections */
 .grid-pattern {
   background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+@keyframes whatsapp-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+@keyframes whatsapp-pulse {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: scale(1.22);
+  }
+}
+
+.whatsapp-float {
+  animation: whatsapp-float 2.8s ease-in-out infinite;
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 1.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float,
+  .whatsapp-pulse {
+    animation: none;
+  }
 }
 
 /* Card elevation on hover */

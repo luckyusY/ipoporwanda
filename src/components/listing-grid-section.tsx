@@ -30,7 +30,7 @@ export function ListingGridSection({
             <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
               {eyebrow}
             </p>
-            <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
+            <h2 className={`ipopo-title mt-2.5 text-2xl font-black tracking-normal sm:text-3xl lg:text-4xl ${dark ? "ipopo-title-on-dark" : ""}`}>
               {title}
             </h2>
             <p className={`mt-1.5 text-sm font-semibold ${dark ? "text-white/40" : "text-muted"}`}>

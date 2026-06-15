@@ -276,7 +276,7 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
 
       {/* ── Results header ────────────────────────────────────────────── */}
       <div className="mb-5 flex items-center justify-between gap-4">
-        <h2 className="text-xl font-black tracking-tight sm:text-2xl">
+        <h2 className="ipopo-title text-xl font-black tracking-normal sm:text-2xl">
           {activeFilters.length > 0 ? "Search results" : "Verified properties"}
         </h2>
         <span className="rounded-full border border-line bg-surface px-3 py-1 text-xs font-bold text-muted">

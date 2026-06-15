@@ -95,7 +95,7 @@ export default async function PropertyDetail({ params }: { params: Promise<{ slu
                     {listing.category}
                   </span>
                 </div>
-                <h1 className="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">
+                <h1 className="ipopo-title mt-4 max-w-4xl text-4xl font-black tracking-normal sm:text-5xl">
                   {listing.title}
                 </h1>
                 <p className="mt-3 inline-flex items-center gap-2 text-muted">
@@ -129,7 +129,7 @@ export default async function PropertyDetail({ params }: { params: Promise<{ slu
 
             <section className="rounded-lg border border-line bg-surface p-6 shadow-sm">
               <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand">Overview</p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight">Property story</h2>
+              <h2 className="ipopo-title mt-3 text-3xl font-black tracking-normal">Property story</h2>
               <p className="mt-4 max-w-3xl text-lg leading-8 text-muted">{listing.summary}</p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {listing.features.map((feature) => (
@@ -200,7 +200,7 @@ export default async function PropertyDetail({ params }: { params: Promise<{ slu
               <div className="mb-8 flex items-end justify-between gap-4">
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.18em] text-brand">Similar listings</p>
-                  <h2 className="mt-3 text-3xl font-black tracking-tight">You may also like</h2>
+                  <h2 className="ipopo-title mt-3 text-3xl font-black tracking-normal">You may also like</h2>
                 </div>
                 <Link href="/properties" className="text-sm font-bold text-brand hover:text-brand-dark">
                   View all

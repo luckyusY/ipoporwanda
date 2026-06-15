@@ -27,7 +27,7 @@ export default async function PropertiesPage() {
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
               Kigali listings
             </p>
-            <h1 className="mt-2.5 text-3xl font-black tracking-tight sm:text-4xl lg:text-5xl">
+            <h1 className="ipopo-title mt-2.5 text-3xl font-black tracking-normal sm:text-4xl lg:text-5xl">
               Properties for rent and sale
             </h1>
             <p className="mt-3 max-w-xl text-sm leading-7 text-muted">

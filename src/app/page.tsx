@@ -65,7 +65,7 @@ export default async function Home() {
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
                   Browse by category
                 </p>
-                <h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                <h2 className="ipopo-title ipopo-title-on-dark mt-2 text-2xl font-black tracking-normal sm:text-3xl">
                   Find exactly what you&apos;re looking for.
                 </h2>
               </div>
@@ -107,7 +107,7 @@ export default async function Home() {
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
                     Kigali neighborhoods
                   </p>
-                  <h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                  <h2 className="ipopo-title ipopo-title-on-dark mt-2 text-2xl font-black tracking-normal sm:text-3xl">
                     Where do you want to live?
                   </h2>
                 </div>
@@ -169,7 +169,7 @@ export default async function Home() {
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
                   Owner spotlight
                 </p>
-                <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
+                <h2 className="ipopo-title mt-2.5 text-2xl font-black tracking-normal sm:text-3xl lg:text-4xl">
                   More properties ready for enquiries.
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-muted">

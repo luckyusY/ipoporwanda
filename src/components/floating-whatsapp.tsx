@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
+import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr/WhatsappLogo";
 
 const PHONE = "250788334207";
 const MESSAGE = encodeURIComponent("Hello Ipopo Rwanda, I need help with a listing.");
@@ -12,10 +12,11 @@ export function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3 text-sm font-black text-white shadow-lg shadow-black/25 transition-all duration-200 hover:scale-105 hover:bg-[#1ebe5d] hover:shadow-xl sm:py-3.5"
+      className="whatsapp-float group fixed bottom-5 right-5 z-50 inline-flex min-h-14 min-w-14 items-center justify-center gap-2 rounded-full bg-[#25D366] px-0 text-sm font-black text-white shadow-2xl shadow-[#25D366]/30 ring-1 ring-white/30 transition hover:bg-[#1ebe5d] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 sm:right-6 sm:px-4 sm:py-3.5"
     >
-      <MessageCircle size={20} strokeWidth={2.5} aria-hidden />
-      <span className="hidden sm:inline">WhatsApp</span>
+      <span className="whatsapp-pulse absolute inset-0 -z-10 rounded-full bg-[#25D366]" aria-hidden />
+      <WhatsappLogo size={27} weight="fill" aria-hidden />
+      <span className="hidden pr-1 sm:inline">WhatsApp</span>
     </a>
   );
 }
