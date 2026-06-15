@@ -35,7 +35,7 @@ export function SwiperSection({
   const btnBase =
     "grid size-10 place-items-center rounded-full border shadow-sm transition";
   const btnColor = dark
-    ? "border-white/25 bg-white/10 text-white hover:bg-white hover:text-brand-dark"
+    ? "border-white/25 bg-white/10 text-white hover:bg-white hover:text-foreground"
     : "border-line bg-surface text-foreground hover:border-brand hover:bg-brand hover:text-white";
 
   return (

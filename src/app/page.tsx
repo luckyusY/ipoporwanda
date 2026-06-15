@@ -57,7 +57,7 @@ export default async function Home() {
       <main>
         <HeroSlider listings={heroListings.length ? heroListings : listings} />
 
-        <section className="bg-brand-dark py-10 sm:py-14">
+        <section className="bg-foreground py-10 sm:py-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             {/* Section header */}
             <div className="mb-7 flex items-end justify-between gap-4">
@@ -82,7 +82,7 @@ export default async function Home() {
                 <Link
                   key={tile.label}
                   href={tile.href}
-                  className="group relative block h-36 overflow-hidden rounded-xl bg-brand sm:h-44"
+                  className="group relative block h-36 overflow-hidden rounded-xl bg-foreground sm:h-44"
                 >
                   <Image
                     src={tile.image}
@@ -91,7 +91,7 @@ export default async function Home() {
                     sizes="(min-width: 1024px) 180px, (min-width: 640px) 25vw, 50vw"
                     className="object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-brand-dark px-3 py-3.5">
+                  <div className="absolute inset-x-0 bottom-0 bg-foreground px-3 py-3.5">
                     <p className="text-xs font-black text-white sm:text-sm">{tile.label}</p>
                     <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-gold sm:text-[11px]">
                       Explore now
@@ -124,7 +124,7 @@ export default async function Home() {
                   <Link
                     key={location.label}
                     href={location.href}
-                    className="group relative block aspect-[16/10] overflow-hidden rounded-2xl border border-white/12 bg-brand shadow-2xl shadow-black/15"
+                    className="group relative block aspect-[16/10] overflow-hidden rounded-2xl border border-white/12 bg-foreground shadow-2xl shadow-black/15"
                   >
                     <Image
                       src={location.image}
