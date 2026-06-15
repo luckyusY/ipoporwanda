@@ -6,9 +6,10 @@ import { ListingModel } from "@/lib/listing-model";
 import { getMongo } from "@/lib/mongodb";
 
 const listingSchema = z.object({
+  group: z.enum(["properties", "cars"]).default("properties"),
   title: z.string().min(5),
   purpose: z.enum(["rent", "sale"]),
-  category: z.enum(["house", "apartment", "villa", "land", "office", "retail"]),
+  category: z.enum(["house", "apartment", "villa", "land", "office", "retail", "car"]),
   location: z.string().min(2),
   district: z.string().min(2),
   price: z.number().positive(),
@@ -31,7 +32,10 @@ export async function POST(request: Request) {
   const parsed = listingSchema.safeParse(await request.json());
 
   if (!parsed.success) {
-    return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid listing." }, { status: 400 });
+    return NextResponse.json(
+      { error: parsed.error.issues[0]?.message ?? "Invalid listing." },
+      { status: 400 },
+    );
   }
 
   try {
@@ -39,7 +43,7 @@ export async function POST(request: Request) {
     const uploads = await Promise.all(
       parsed.data.images.map((image) =>
         cloudinary.uploader.upload(image, {
-          folder: "ipoporwanda/properties",
+          folder: "ipoporwanda/listings",
           resource_type: "image",
           transformation: [{ quality: "auto", fetch_format: "auto" }],
         }),
@@ -50,13 +54,15 @@ export async function POST(request: Request) {
 
     const now = new Date().toISOString();
     const slug = `${slugify(parsed.data.title)}-${Date.now().toString(36)}`;
+
+    const { images: _images, ...rest } = parsed.data;
+
     const listing = await ListingModel.create({
-      ...parsed.data,
+      ...rest,
       id: crypto.randomUUID(),
       slug,
-      group: "properties",
       status: "draft",
-      images: uploads.map((upload) => upload.secure_url),
+      images: uploads.map((u) => u.secure_url),
       agentName: "Ipopo Rwanda",
       featured: false,
       createdAt: now,
@@ -64,7 +70,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ listing }, { status: 201 });
   } catch (error) {
-    console.error(error);
+    console.error("POST /api/properties error:", error);
     return NextResponse.json({ error: "Could not create the listing." }, { status: 500 });
   }
 }

@@ -1,43 +1,17 @@
 import type { Metadata } from "next";
-import { ListingForm } from "@/components/listing-form";
-import { SiteHeader } from "@/components/site-header";
+import { AdminDashboard } from "@/components/admin-dashboard";
 
 export const metadata: Metadata = {
-  title: "Owner Listing Studio",
+  title: "Owner Studio | Ipopo Rwanda",
   robots: { index: false, follow: false },
 };
 
 export default function AdminPage() {
-  const cards = [
-    ["Draft review", "Prepare a listing privately before it goes live."],
-    ["Image previews", "Check every uploaded photo before saving the listing."],
-    ["Contact details", "Keep call and WhatsApp information clear for enquiries."],
-    ["Listing quality", "Write clean descriptions, prices, features, and locations."],
-  ];
-
   return (
-    <>
-      <SiteHeader />
-      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-gold">Admin</p>
-          <h1 className="mt-3 text-4xl font-black tracking-tight">Owner listing studio</h1>
-          <p className="mt-3 max-w-2xl text-muted">
-            Add property details, preview images instantly, and save a clean listing draft for review before it appears publicly.
-          </p>
-        </div>
-
-        <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map(([title, text]) => (
-            <div key={title} className="rounded-lg border border-line bg-surface p-4 shadow-sm">
-              <h2 className="font-bold">{title}</h2>
-              <p className="mt-2 text-sm leading-6 text-muted">{text}</p>
-            </div>
-          ))}
-        </div>
-
-        <ListingForm />
-      </main>
-    </>
+    <main className="min-h-screen bg-background">
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
+        <AdminDashboard />
+      </div>
+    </main>
   );
 }
