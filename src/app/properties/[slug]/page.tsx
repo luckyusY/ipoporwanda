@@ -280,7 +280,7 @@ export default async function PropertyDetail({ params }: { params: Promise<{ slu
                   View all →
                 </Link>
               </Reveal>
-              <GSAPStagger className="grid gap-5 md:grid-cols-3">
+              <GSAPStagger className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
                 {similar.map((item, i) => (
                   <PropertyCard key={item.id} listing={item} priority={i === 0} />
                 ))}
