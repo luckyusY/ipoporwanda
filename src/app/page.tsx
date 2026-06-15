@@ -20,6 +20,15 @@ const categoryTiles = [
   { label: "Nyarutarama", href: "/properties", image: "/images/properties/prop-15.jpg" },
 ];
 
+const topLocationCards = [
+  { label: "Kacyiru", href: "/properties?q=Kacyiru", image: "/images/locations/kacyiru.jpg" },
+  { label: "Nyarutarama", href: "/properties?q=Nyarutarama", image: "/images/locations/nyarutarama.jpg" },
+  { label: "Kibagabaga", href: "/properties?q=Kibagabaga", image: "/images/locations/kibagabaga.jpg" },
+  { label: "Rebero", href: "/properties?q=Rebero", image: "/images/locations/rebero.jpg" },
+  { label: "Gacuriro", href: "/properties?q=Gacuriro", image: "/images/locations/gacuriro.jpg" },
+  { label: "Kimihurura", href: "/properties?q=Kimihurura", image: "/images/locations/kimihurura.jpg" },
+];
+
 export default async function Home() {
   const listings = await getListings();
   const properties = listings.filter((l) => l.group === "properties");
@@ -91,6 +100,44 @@ export default async function Home() {
                 </Link>
               ))}
             </SwiperSection>
+
+            <div id="locations" className="mt-10 border-t border-white/10 pt-9 sm:mt-12 sm:pt-10">
+              <div className="mb-6 flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
+                    Top locations
+                  </p>
+                  <h2 className="mt-2 text-2xl font-black tracking-tight text-white sm:text-3xl">
+                    Designed neighborhood guides for Kigali buyers.
+                  </h2>
+                </div>
+                <Link
+                  href="/properties"
+                  className="hidden shrink-0 text-sm font-bold text-white/55 transition hover:text-white sm:inline-flex"
+                >
+                  View all locations
+                </Link>
+              </div>
+
+              <SwiperSection initialView={1.08} sm={2} lg={3} gap={16} nav dark>
+                {topLocationCards.map((location, index) => (
+                  <Link
+                    key={location.label}
+                    href={location.href}
+                    className="group relative block aspect-[16/10] overflow-hidden rounded-2xl border border-white/12 bg-brand shadow-2xl shadow-black/15"
+                  >
+                    <Image
+                      src={location.image}
+                      alt={`${location.label} top location design`}
+                      fill
+                      priority={index === 0}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 92vw"
+                      className="object-cover transition duration-500 group-hover:scale-[1.035]"
+                    />
+                  </Link>
+                ))}
+              </SwiperSection>
+            </div>
           </div>
         </section>
 
@@ -145,52 +192,6 @@ export default async function Home() {
           </div>
         </section>
 
-{/* ── Locations ───────────────────────────────────────────────── */}
-        <section id="locations" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
-          <Reveal className="mb-8 sm:mb-10">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
-              Prime Kigali locations
-            </p>
-            <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
-              Neighborhood intelligence for serious buyers and renters.
-            </h2>
-          </Reveal>
-
-          <SwiperSection initialView={1.2} sm={2} lg={3} gap={12}>
-            {[
-              "Kibagabaga",
-              "Kacyiru",
-              "Nyarutarama",
-              "Rebero",
-              "Gacuriro",
-              "Kimironko",
-              "Kimihurura",
-              "Kiyovu",
-              "Remera",
-            ].map((location, i) => (
-              <div
-                key={location}
-                className="group flex items-center gap-4 rounded-2xl border border-line bg-surface p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand/25 hover:shadow-lg sm:p-5"
-              >
-                <span className="grid size-10 flex-none place-items-center rounded-xl bg-brand-soft text-xs font-black text-brand">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-bold">{location}</p>
-                  <p className="mt-0.5 text-xs text-muted">Kigali, Rwanda</p>
-                </div>
-                <div className="flex shrink-0 items-center gap-2">
-                  <span className="rounded-full bg-brand-soft px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-brand">
-                    Hot
-                  </span>
-                  <span className="text-muted/40 transition duration-200 group-hover:translate-x-0.5 group-hover:text-brand">
-                    →
-                  </span>
-                </div>
-              </div>
-            ))}
-          </SwiperSection>
-        </section>
 
       </main>
     </>
