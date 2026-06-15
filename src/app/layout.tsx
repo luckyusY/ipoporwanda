@@ -8,6 +8,7 @@ import "swiper/css/thumbs";
 import { SiteFooter } from "@/components/site-footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
+import { MobileIpopoMenu } from "@/components/mobile-ipopo-menu";
 import "./globals.css";
 
 const inter = Inter({
@@ -67,6 +68,7 @@ export default function RootLayout({
         <SiteFooter />
         <FloatingWhatsApp />
         <ScrollToTop />
+        <MobileIpopoMenu />
       </body>
     </html>
   );

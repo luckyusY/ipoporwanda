@@ -12,7 +12,7 @@ export function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="whatsapp-float group fixed bottom-5 right-5 z-50 inline-flex min-h-14 min-w-14 items-center justify-center gap-2 rounded-full bg-[#25D366] px-0 text-sm font-black text-white shadow-2xl shadow-[#25D366]/30 ring-1 ring-white/30 transition hover:bg-[#1ebe5d] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 sm:right-6 sm:px-4 sm:py-3.5"
+      className="whatsapp-float group fixed bottom-20 right-5 z-50 inline-flex min-h-14 min-w-14 items-center justify-center gap-2 rounded-full bg-[#25D366] px-0 text-sm font-black text-white shadow-2xl shadow-[#25D366]/30 ring-1 ring-white/30 transition hover:bg-[#1ebe5d] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 sm:bottom-6 sm:right-6 sm:px-4 sm:py-3.5"
     >
       <span className="whatsapp-pulse absolute inset-0 -z-10 rounded-full bg-[#25D366]" aria-hidden />
       <WhatsappLogo size={27} weight="fill" aria-hidden />
