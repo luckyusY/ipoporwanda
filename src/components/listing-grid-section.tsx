@@ -51,7 +51,7 @@ export function ListingGridSection({
           </div>
         </GSAPSectionHeader>
 
-        <GSAPStagger className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-4">
+        <GSAPStagger className="mt-6 grid gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
           {sectionListings.map((listing, index) => (
             <PropertyCard key={listing.id} listing={listing} priority={index < 2} />
           ))}

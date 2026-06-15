@@ -29,7 +29,7 @@ export function PropertyCard({
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface text-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
 
       {/* ── Image ─────────────────────────── */}
-      <div className="relative h-44 overflow-hidden bg-surface-soft sm:h-56 lg:h-52 xl:h-60">
+      <div className="relative h-56 overflow-hidden bg-surface-soft sm:h-64 lg:h-60 xl:h-64">
         <CardImageSlider
           images={listing.images}
           title={listing.title}
@@ -86,7 +86,7 @@ export function PropertyCard({
       </div>
 
       {/* ── Card body ─────────────────────── */}
-      <div className="flex flex-1 flex-col gap-2 p-3 sm:gap-3 sm:p-4">
+      <div className="flex flex-1 flex-col gap-3 p-4">
 
         {/* Location */}
         <p className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-muted">
@@ -95,7 +95,7 @@ export function PropertyCard({
         </p>
 
         {/* Title */}
-        <h3 className="-mt-0.5 line-clamp-2 text-sm font-bold leading-snug tracking-tight sm:text-base">
+        <h3 className="-mt-1 line-clamp-2 min-h-[2.75rem] text-base font-bold leading-snug tracking-tight">
           <Link href={href} className="text-foreground transition-colors hover:text-brand">
             {listing.title}
           </Link>
@@ -165,17 +165,16 @@ export function PropertyCard({
             href={toWhatsappUrl(listing.whatsapp, listing.title)}
             target="_blank"
             rel="noreferrer"
-            className="flex min-h-[40px] flex-1 items-center justify-center gap-1.5 rounded-full bg-[#16a34a] px-2 text-xs font-bold text-white transition hover:bg-[#15803d] sm:min-h-[44px] sm:px-3"
+            className="flex min-h-[44px] flex-1 items-center justify-center gap-1.5 rounded-full bg-[#16a34a] px-3 text-xs font-bold text-white transition hover:bg-[#15803d]"
           >
-            <WhatsappLogo size={15} weight="fill" aria-hidden />
-            <span className="hidden xs:inline sm:inline">WhatsApp</span>
-            <span className="xs:hidden sm:hidden">Chat</span>
+            <WhatsappLogo size={17} weight="fill" aria-hidden />
+            WhatsApp
           </a>
           <a
             href={`tel:${listing.phone}`}
-            className="flex min-h-[40px] w-[38%] items-center justify-center gap-1.5 rounded-full border border-line text-xs font-bold text-foreground transition hover:border-brand hover:text-brand sm:min-h-[44px]"
+            className="flex min-h-[44px] w-[40%] items-center justify-center gap-1.5 rounded-full border border-line text-xs font-bold text-foreground transition hover:border-brand hover:text-brand"
           >
-            <PhoneCall size={15} weight="duotone" aria-hidden />
+            <PhoneCall size={16} weight="duotone" aria-hidden />
             Call
           </a>
         </div>
