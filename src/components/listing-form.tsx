@@ -107,7 +107,6 @@ export function ListingForm() {
         <label className="grid gap-2 text-sm font-semibold">
           Currency
           <select name="currency" className="h-12 rounded-md border border-line bg-background px-4 font-normal outline-none focus:border-brand">
-            <option value="USD">USD</option>
             <option value="RWF">RWF</option>
           </select>
         </label>

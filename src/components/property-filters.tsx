@@ -192,7 +192,7 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
 
         {/* Row 2 — price range + sort */}
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <span className="shrink-0 text-xs font-bold text-muted">Price (USD)</span>
+          <span className="shrink-0 text-xs font-bold text-muted">Price (RWF)</span>
           <input
             type="number"
             min={0}

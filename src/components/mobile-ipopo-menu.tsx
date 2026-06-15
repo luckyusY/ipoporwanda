@@ -140,7 +140,7 @@ export function MobileIpopoMenu() {
           </Link>
           <Link href="/admin" className="grid place-items-center gap-0.5 py-1.5">
             <PlusCircle size={22} />
-            List
+            Admin
           </Link>
         </div>
       </div>
