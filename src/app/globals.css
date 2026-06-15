@@ -28,16 +28,29 @@
   --color-gold: var(--gold);
   --color-ipopo-blue: var(--ipopo-blue);
   --color-ipopo-blue-dark: var(--ipopo-blue-dark);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-igiti-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-igiti-serif), Georgia, Cambria, "Times New Roman", serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-igiti-sans), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
+}
+
+main h1,
+main h2,
+.hero-title {
+  font-family: var(--font-igiti-serif), Georgia, Cambria, "Times New Roman", serif;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+main h3 {
+  letter-spacing: 0;
 }
 
 html {
@@ -208,7 +221,7 @@ html {
 /* Fluid hero heading: never smaller than 1.9rem, grows with viewport */
 .hero-title {
   font-size: clamp(1.9rem, 5.5vw, 4.5rem);
-  line-height: 1.06;
+  line-height: 0.98;
 }
 
 /* Gradient text */

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter, Playfair_Display } from "next/font/google";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -9,9 +9,15 @@ import { SiteFooter } from "@/components/site-footer";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-igiti-sans",
   subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-igiti-serif",
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
@@ -54,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${geistMono.variable}`}>
       <body className="min-h-full antialiased">
         {children}
         <SiteFooter />
