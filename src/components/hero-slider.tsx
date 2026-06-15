@@ -1,19 +1,42 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { SwiperRef } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import gsap from "gsap";
 import type { PropertyListing } from "@/lib/types";
 
+function animateSlideContent(slideEl: Element) {
+  const targets = slideEl.querySelectorAll("[data-ha]");
+  if (!targets.length) return;
+  gsap.fromTo(
+    Array.from(targets),
+    { opacity: 0, y: 26 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.72,
+      ease: "power3.out",
+      stagger: 0.13,
+      clearProps: "transform,opacity",
+    },
+  );
+}
+
 export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
+  const swiperRef = useRef<SwiperRef>(null);
   const slides = listings.slice(0, 6);
   if (!slides.length) return null;
 
   return (
     <section className="hero-section relative isolate overflow-hidden text-white">
       <Swiper
+        ref={swiperRef}
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         effect="fade"
         loop={slides.length > 1}
@@ -22,6 +45,24 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
         pagination={{ clickable: true, el: ".hero-pagination" }}
         navigation={{ prevEl: ".hero-prev", nextEl: ".hero-next" }}
         className="hero-section absolute inset-0 w-full"
+        onSwiper={(swiper: SwiperType) => {
+          // Animate first slide after hero image has a moment to paint
+          setTimeout(() => {
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            if (activeSlide) animateSlideContent(activeSlide);
+          }, 280);
+        }}
+        onSlideChangeTransitionStart={(swiper: SwiperType) => {
+          // Pre-hide the incoming slide's content so the animate-in is clean
+          const incoming = swiper.slides[swiper.activeIndex];
+          if (incoming) {
+            gsap.set(incoming.querySelectorAll("[data-ha]"), { opacity: 0, y: 26 });
+          }
+        }}
+        onSlideChangeTransitionEnd={(swiper: SwiperType) => {
+          const activeSlide = swiper.slides[swiper.activeIndex];
+          if (activeSlide) animateSlideContent(activeSlide);
+        }}
       >
         {slides.map((listing, index) => (
           <SwiperSlide key={listing.id}>
@@ -38,16 +79,28 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
               <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/38 to-black/18 md:bg-black/38" />
 
               <div className="relative z-10 w-full max-w-4xl md:px-0">
-                <div className="mb-3 inline-flex min-h-8 items-center rounded-full border border-white/20 bg-white/14 px-3 text-[10px] font-black uppercase tracking-[0.2em] text-gold backdrop-blur-sm md:hidden">
+                <div
+                  data-ha
+                  className="mb-3 inline-flex min-h-8 items-center rounded-full border border-white/20 bg-white/14 px-3 text-[10px] font-black uppercase tracking-[0.2em] text-gold backdrop-blur-sm md:hidden"
+                >
                   Verified Kigali listing
                 </div>
-                <h1 className="hero-title max-w-3xl font-black tracking-normal text-balance drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] md:mx-auto md:max-w-4xl">
+                <h1
+                  data-ha
+                  className="hero-title max-w-3xl font-black tracking-normal text-balance drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] md:mx-auto md:max-w-4xl"
+                >
                   {listing.title}
                 </h1>
-                <p className="mt-3 line-clamp-2 max-w-xl text-sm leading-6 text-white/86 drop-shadow sm:text-base md:mx-auto md:mt-4 md:line-clamp-none md:leading-7">
+                <p
+                  data-ha
+                  className="mt-3 line-clamp-2 max-w-xl text-sm leading-6 text-white/86 drop-shadow sm:text-base md:mx-auto md:mt-4 md:line-clamp-none md:leading-7"
+                >
                   {listing.summary}
                 </p>
-                <div className="mt-6 grid w-full grid-cols-1 gap-2.5 sm:max-w-md sm:grid-cols-2 md:mx-auto md:mt-8 md:flex md:max-w-none md:flex-wrap md:justify-center md:gap-3">
+                <div
+                  data-ha
+                  className="mt-6 grid w-full grid-cols-1 gap-2.5 sm:max-w-md sm:grid-cols-2 md:mx-auto md:mt-8 md:flex md:max-w-none md:flex-wrap md:justify-center md:gap-3"
+                >
                   <Link
                     href="/properties"
                     className="press inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-sm bg-white px-7 text-sm font-bold text-brand-dark shadow transition hover:bg-brand-soft"
@@ -64,7 +117,10 @@ export function HeroSlider({ listings }: { listings: PropertyListing[] }) {
                 </div>
               </div>
 
-              <div className="absolute bottom-16 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2.5 md:flex">
+              <div
+                data-ha
+                className="absolute bottom-16 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2.5 md:flex"
+              >
                 <span className="text-[10px] font-black uppercase tracking-[0.24em] text-white/75">
                   Explore Properties
                 </span>

@@ -6,14 +6,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function Reveal({
+export function GSAPStagger({
   children,
   className,
-  delay = 0,
 }: {
   children: React.ReactNode;
   className?: string;
-  delay?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -23,14 +21,14 @@ export function Reveal({
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        el,
-        { opacity: 0, y: 24 },
+        Array.from(el.children),
+        { opacity: 0, y: 44 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.65,
+          duration: 0.6,
           ease: "power3.out",
-          delay,
+          stagger: 0.09,
           clearProps: "transform,opacity",
           scrollTrigger: {
             trigger: el,
@@ -42,7 +40,7 @@ export function Reveal({
     }, el);
 
     return () => ctx.revert();
-  }, [delay]);
+  }, []);
 
   return (
     <div ref={ref} className={className}>
