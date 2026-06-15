@@ -54,14 +54,17 @@ export function PropertyCard({
         )}
 
         {/* Price strip — bottom of image */}
-        <span className="absolute left-3 bottom-12 z-20 grid size-9 place-items-center rounded-full bg-white/95 p-1 shadow-lg ring-1 ring-white/70" aria-label="Ipopo Rwanda listing">
+        <span className="absolute left-3 bottom-12 z-20 inline-flex h-8 items-center gap-1.5 rounded-full border border-white/80 bg-white/95 py-1 pl-1 pr-2 shadow-lg shadow-black/20 ring-1 ring-brand/10 backdrop-blur" aria-label="Ipopo Rwanda listing">
           <Image
             src="/logo.png"
             alt=""
-            width={28}
-            height={28}
-            className="h-full w-full object-contain"
+            width={24}
+            height={24}
+            className="size-6 rounded-full object-contain"
           />
+          <span className="text-[10px] font-black leading-none text-brand-dark">
+            Ipopo
+          </span>
         </span>
 
         <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between bg-brand-dark px-3.5 py-2.5">
