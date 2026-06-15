@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { PropertyFilters } from "@/components/property-filters";
+import { PropertyGridSkeleton } from "@/components/property-card-skeleton";
 import { SiteHeader } from "@/components/site-header";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { getListings } from "@/lib/listings";
@@ -36,7 +37,7 @@ export default async function PropertiesPage() {
           </div>
         </div>
 
-        <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-20 text-center text-sm text-muted sm:px-6 lg:px-8">Loading listings…</div>}>
+        <Suspense fallback={<PropertyGridSkeleton count={9} withFilters />}>
           <PropertyFilters listings={listings} />
         </Suspense>
       </main>

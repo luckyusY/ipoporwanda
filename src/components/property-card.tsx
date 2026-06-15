@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight";
 import { Bathtub } from "@phosphor-icons/react/dist/ssr/Bathtub";
 import { Bed } from "@phosphor-icons/react/dist/ssr/Bed";
@@ -53,6 +54,16 @@ export function PropertyCard({
         )}
 
         {/* Price strip — bottom of image */}
+        <span className="absolute left-3 bottom-12 z-20 grid size-9 place-items-center rounded-full bg-white/95 p-1 shadow-lg ring-1 ring-white/70" aria-label="Ipopo Rwanda listing">
+          <Image
+            src="/logo.png"
+            alt=""
+            width={28}
+            height={28}
+            className="h-full w-full object-contain"
+          />
+        </span>
+
         <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between bg-brand-dark px-3.5 py-2.5">
           <p className="text-sm font-black text-white">
             {formatMoney(listing.price, listing.currency)}

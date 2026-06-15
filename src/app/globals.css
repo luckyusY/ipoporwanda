@@ -130,6 +130,20 @@ html {
   transform: scale(0.97);
 }
 
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.48), transparent);
+  animation: skeleton-shimmer 1.35s ease-in-out infinite;
+}
+
 .card-swiper {
   width: 100%;
 }
@@ -283,6 +297,12 @@ html {
   }
 }
 
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 .whatsapp-float {
   animation: whatsapp-float 2.8s ease-in-out infinite;
 }
@@ -293,7 +313,8 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float,
-  .whatsapp-pulse {
+  .whatsapp-pulse,
+  .skeleton-shimmer::after {
     animation: none;
   }
 }
