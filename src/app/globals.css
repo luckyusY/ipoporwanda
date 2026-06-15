@@ -184,41 +184,6 @@ html {
   }
 }
 
-.footer-acc summary::-webkit-details-marker {
-  display: none;
-}
-
-.footer-acc summary {
-  list-style: none;
-  cursor: pointer;
-}
-
-.footer-acc .footer-acc-body {
-  display: none;
-}
-
-.footer-acc[open] .footer-acc-body {
-  display: block;
-}
-
-.footer-acc .footer-acc-chevron {
-  transition: transform 0.2s ease;
-}
-
-.footer-acc[open] .footer-acc-chevron {
-  transform: rotate(180deg);
-}
-
-@media (min-width: 768px) {
-  .footer-acc .footer-acc-body {
-    display: block;
-  }
-
-  .footer-acc summary {
-    cursor: default;
-    pointer-events: none;
-  }
-}
 
 @keyframes swipe-nudge {
   0%,

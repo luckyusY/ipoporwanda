@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import "swiper/css/thumbs";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className="min-h-full antialiased">
         {children}
         <SiteFooter />
+        <ScrollToTop />
       </body>
     </html>
   );
