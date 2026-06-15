@@ -15,7 +15,7 @@ const categoryTiles = [
   { label: "Land & plots", href: "/properties", image: "/images/properties/prop-12.jpg" },
   { label: "Commercial", href: "/properties", image: "/images/properties/prop-08.jpg" },
   { label: "Cars for rent", href: "/#cars", image: "/images/hero/kigali-car-hero.png" },
-  { label: "Cars for sale", href: "/#cars", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=75" },
+  { label: "Cars for sale", href: "/#cars", image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=75" },
   { label: "Kacyiru", href: "/properties", image: "/images/properties/prop-13.jpg" },
   { label: "Nyarutarama", href: "/properties", image: "/images/properties/prop-15.jpg" },
 ];
