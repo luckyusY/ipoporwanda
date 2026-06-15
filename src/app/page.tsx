@@ -167,7 +167,7 @@ export default async function Home() {
           <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
             <Reveal className="mb-8 flex flex-col justify-between gap-4 sm:mb-10 lg:flex-row lg:items-end">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
                   Owner spotlight
                 </p>
                 <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">

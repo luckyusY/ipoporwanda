@@ -7,12 +7,12 @@
   --surface: #ffffff;
   --surface-soft: #f0eee5;
   --line: #ded9c7;
-  --brand: #1600ff;
-  --brand-dark: #09006b;
-  --brand-soft: #eaebff;
+  --brand: #0099D6;
+  --brand-dark: #006B99;
+  --brand-soft: #E0F4FF;
   --gold: #f5c400;
-  --ipopo-blue: #1600ff;
-  --ipopo-blue-dark: #09006b;
+  --ipopo-blue: #0099D6;
+  --ipopo-blue-dark: #006B99;
 }
 
 @theme inline {

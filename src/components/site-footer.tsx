@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MapPin, Send } from "lucide-react";
 
 const whatsappUrl =
-  "https://wa.me/250788000000?text=Hello%20Ipopo%20Rwanda%2C%20I%20need%20help%20with%20a%20listing.";
+  "https://wa.me/250788334207?text=Hello%20Ipopo%20Rwanda%2C%20I%20need%20help%20with%20a%20listing.";
 
 export function SiteFooter() {
   return (

@@ -7,8 +7,8 @@ import { PropertyCard } from "@/components/property-card";
 import type { ListingPurpose, PropertyListing } from "@/lib/types";
 
 const LOCATIONS = [
-  "Kibagabaga", "Kacyiru", "Nyarutarama", "Gacuriro",
-  "Rebero", "Kimihurura", "Kiyovu", "Remera", "Kimironko",
+  "Kigali", "Kibagabaga", "Kacyiru", "Nyarutarama", "Gacuriro",
+  "Rebero", "Kimihurura", "Kiyovu", "Remera", "Kimironko", "Kicukiro",
 ];
 
 function Chip({ label, onRemove }: { label: string; onRemove: () => void }) {

@@ -6,9 +6,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { MainNav } from "@/components/main-nav";
 
-const phoneDisplay = "+250 788 000 000";
-const phoneTel = "+250788000000";
-const whatsappUrl = "https://wa.me/250788000000?text=Hello%20Ipopo%20Rwanda%2C%20I%20need%20help%20with%20a%20listing.";
+const phoneDisplay = "+250 788 334 207";
+const phoneTel = "+250788334207";
+const whatsappUrl = "https://wa.me/250788334207?text=Hello%20Ipopo%20Rwanda%2C%20I%20need%20help%20with%20a%20listing.";
 
 export function SiteHeader() {
   const [hidden, setHidden] = useState(false);
@@ -44,10 +44,10 @@ export function SiteHeader() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <div className="bg-ipopo-blue px-2 py-1 text-center text-[10px] font-black leading-[16px] text-white sm:px-4 sm:text-[11px] sm:leading-[18px]">
-        <span className="text-gold">Ipopo Rwanda</span> premium property and cars.{" "}
-        <Link href="/admin" className="text-gold underline-offset-2 hover:underline">
-          LIST NOW
+      <div className="bg-gold px-2 py-1 text-center text-[10px] font-black leading-[16px] text-foreground sm:px-4 sm:text-[11px] sm:leading-[18px]">
+        <span className="text-brand-dark">Ipopo Rwanda</span> — premium properties &amp; cars in Kigali.{" "}
+        <Link href="/admin" className="text-brand-dark underline underline-offset-2 hover:opacity-70">
+          LIST NOW →
         </Link>
       </div>
 
@@ -101,6 +101,7 @@ export function SiteHeader() {
                 className="h-full shrink-0 border-0 bg-transparent pl-3.5 pr-1 text-[11px] font-bold text-foreground outline-none sm:text-xs"
               >
                 <option value="">All areas</option>
+                <option>Kigali</option>
                 <option>Kibagabaga</option>
                 <option>Kacyiru</option>
                 <option>Nyarutarama</option>
@@ -110,6 +111,7 @@ export function SiteHeader() {
                 <option>Remera</option>
                 <option>Rebero</option>
                 <option>Kimironko</option>
+                <option>Kicukiro</option>
               </select>
 
               {/* Divider */}
@@ -154,7 +156,7 @@ export function SiteHeader() {
             </a>
             <Link
               href="/admin"
-              className="inline-flex h-10 items-center gap-2 rounded-full bg-ipopo-blue px-4 text-sm font-black text-white"
+              className="inline-flex h-10 items-center gap-2 rounded-full bg-gold px-4 text-sm font-black text-foreground transition hover:bg-[#c9a200]"
             >
               <PlusCircle size={16} /> List
             </Link>

@@ -27,7 +27,7 @@ export function ListingGridSection({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between gap-4 sm:mb-10">
           <div>
-            <p className={dark ? "text-xs font-black uppercase tracking-[0.22em] text-gold" : "text-xs font-black uppercase tracking-[0.22em] text-brand"}>
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
               {eyebrow}
             </p>
             <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
