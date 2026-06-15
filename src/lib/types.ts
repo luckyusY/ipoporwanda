@@ -22,7 +22,7 @@ export type PropertyListing = {
   location: string;
   district: string;
   price: number;
-  currency: "USD" | "RWF";
+  currency: "RWF";
   bedrooms?: number;
   bathrooms?: number;
   areaSqm?: number;

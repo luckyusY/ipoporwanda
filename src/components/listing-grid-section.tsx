@@ -20,6 +20,8 @@ export function ListingGridSection({
 }) {
   if (!listings.length) return null;
 
+  const shown = Math.min(listings.length, limit);
+
   return (
     <section id={id} className={dark ? "bg-foreground py-12 text-white sm:py-20" : "py-12 sm:py-20"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -31,6 +33,9 @@ export function ListingGridSection({
             <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
               {title}
             </h2>
+            <p className={`mt-1.5 text-sm font-semibold ${dark ? "text-white/40" : "text-muted"}`}>
+              {shown} listing{shown !== 1 ? "s" : ""} available
+            </p>
           </div>
           <Link
             href="/properties"

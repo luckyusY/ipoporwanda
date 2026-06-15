@@ -13,7 +13,7 @@ const listingSchema = new Schema<PropertyListing>(
     location: { type: String, required: true },
     district: { type: String, required: true },
     price: { type: Number, required: true },
-    currency: { type: String, required: true, enum: ["USD", "RWF"] },
+    currency: { type: String, required: true, enum: ["RWF"], default: "RWF" },
     bedrooms: Number,
     bathrooms: Number,
     areaSqm: Number,

@@ -1,4 +1,18 @@
 export function formatMoney(price: number, currency: string) {
+  if (currency === "RWF") {
+    if (price >= 1_000_000_000) {
+      const n = price / 1_000_000_000;
+      return `Rwf ${parseFloat(n.toFixed(1))}B`;
+    }
+    if (price >= 1_000_000) {
+      const n = price / 1_000_000;
+      return `Rwf ${parseFloat(n.toFixed(1))}M`;
+    }
+    if (price >= 100_000) {
+      return `Rwf ${Math.round(price / 1_000)}K`;
+    }
+    return `Rwf ${new Intl.NumberFormat("en-RW").format(price)}`;
+  }
   return new Intl.NumberFormat("en-RW", {
     style: "currency",
     currency,

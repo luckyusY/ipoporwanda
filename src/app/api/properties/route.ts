@@ -12,7 +12,7 @@ const listingSchema = z.object({
   location: z.string().min(2),
   district: z.string().min(2),
   price: z.number().positive(),
-  currency: z.enum(["USD", "RWF"]),
+  currency: z.enum(["RWF"]).default("RWF"),
   bedrooms: z.number().optional(),
   bathrooms: z.number().optional(),
   areaSqm: z.number().optional(),
