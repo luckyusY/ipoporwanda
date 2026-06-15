@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { PropertyCard } from "@/components/property-card";
 import { HeroSlider } from "@/components/hero-slider";
@@ -193,41 +192,6 @@ export default async function Home() {
           </SwiperSection>
         </section>
 
-        {/* ── CTA ─────────────────────────────────────────────────────── */}
-        <section id="contact" className="bg-brand-dark text-white">
-
-          <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-14">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
-                  Ready for launch
-                </p>
-                <h2 className="mt-3 text-2xl font-black tracking-tight sm:text-4xl lg:text-5xl">
-                  A high-end marketplace foundation for Rwanda property and mobility.
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-7 text-white/65 sm:text-base sm:leading-8">
-                  Add real listings, connect the Vercel environment variables, and this becomes a polished public marketplace with admin-ready data flow.
-                </p>
-              </div>
-
-              {/* Buttons — full-width column on mobile, auto on desktop */}
-              <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                <Link
-                  href="/properties"
-                  className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-bold text-brand-dark transition hover:bg-brand-soft"
-                >
-                  Browse marketplace <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="/admin"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/20 px-7 text-sm font-bold transition hover:bg-white hover:text-brand-dark"
-                >
-                  List now
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
     </>
   );
