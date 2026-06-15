@@ -57,8 +57,35 @@ export default async function Home() {
       <main>
         <HeroSlider listings={heroListings.length ? heroListings : listings} />
 
+        <section className="bg-[#050505] px-3 pb-4 pt-2 md:hidden">
+          <h2 className="mb-3 text-center text-sm font-black uppercase tracking-wide text-white">
+            Browse by category
+          </h2>
+          <div className="grid grid-cols-3 gap-1">
+            {categoryTiles.map((tile) => (
+              <Link
+                key={`mobile-${tile.label}`}
+                href={tile.href}
+                className="grid min-h-[122px] place-items-center rounded bg-white p-2 text-center text-[13px] font-bold leading-4 text-foreground"
+              >
+                <span className="relative block h-16 w-full overflow-hidden rounded">
+                  <Image
+                    src={tile.image}
+                    alt={tile.label}
+                    fill
+                    sizes="33vw"
+                    className="object-cover"
+                  />
+                </span>
+                <span>{tile.label}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         <section className="bg-foreground py-10 sm:py-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="hidden md:block">
             {/* Section header */}
             <div className="mb-7 flex items-end justify-between gap-4">
               <div>
@@ -100,8 +127,9 @@ export default async function Home() {
                 </Link>
               ))}
             </SwiperSection>
+            </div>
 
-            <div id="locations" className="mt-10 border-t border-white/10 pt-9 sm:mt-12 sm:pt-10">
+            <div id="locations" className="border-t border-white/10 pt-9 md:mt-10 md:pt-10">
               <div className="mb-6 flex items-end justify-between gap-4">
                 <div>
                   <p className="text-xs font-black uppercase tracking-[0.22em] text-gold">
