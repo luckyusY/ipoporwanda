@@ -16,13 +16,15 @@ export function SiteFooter() {
           {/* ── Brand ──────────────────────────────────────────── */}
           <div>
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <Image
-                src="/logo.png"
-                alt="Ipopo Rwanda"
-                width={64}
-                height={64}
-                className="size-14 object-contain"
-              />
+              <span className="grid size-14 shrink-0 place-items-center rounded-xl bg-white/10 p-1.5">
+                <Image
+                  src="/logo.png"
+                  alt="Ipopo Rwanda"
+                  width={64}
+                  height={64}
+                  className="size-full object-contain"
+                />
+              </span>
               <div className="leading-tight">
                 <p className="text-lg font-black">Ipopo Rwanda</p>
                 <p className="text-[11px] text-white/50">Real estate marketplace</p>
