@@ -1,11 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Building2,
-  MapPin,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { PropertyCard } from "@/components/property-card";
 import { HeroSlider } from "@/components/hero-slider";
@@ -152,48 +146,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* ── Platform features ───────────────────────────────────────── */}
-        <section className="border-y border-line bg-surface-soft">
-          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-20 lg:grid-cols-[0.78fr_1.22fr] lg:px-8">
-            <Reveal>
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
-                Luxury operating system
-              </p>
-              <h2 className="mt-2.5 text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
-                Designed like a serious business, not a template.
-              </h2>
-              <p className="mt-4 text-sm leading-8 text-muted">
-                Server-rendered pages, optimized images, cached listing data, and small interactive islands where motion matters.
-              </p>
-              <Link
-                href="/admin"
-                className="mt-6 inline-flex min-h-[48px] items-center gap-2 rounded-full bg-brand px-6 text-sm font-bold text-white shadow-sm shadow-brand/25 transition hover:bg-brand-dark"
-              >
-                Add premium listing <ArrowRight size={16} />
-              </Link>
-            </Reveal>
-
-            <SwiperSection initialView={1.1} sm={2} gap={16}>
-              {[
-                [Building2, "Real estate CRM-ready", "Draft listings, Cloudinary image upload, MongoDB storage, and schema room for future owner accounts."],
-                [Sparkles,  "Premium storytelling",  "Hero slides, image carousels, trust panels, location blocks, and conversion-focused CTAs."],
-                [MapPin,    "SEO location strategy", "Kigali neighborhood surfaces can grow into location-specific search pages."],
-                [BadgeCheck,"Vercel performance",    "Static shells, ISR cache, next/image, Geist fonts, and compact client components."],
-              ].map(([Icon, title, text]) => (
-                <div
-                  key={String(title)}
-                  className="rounded-2xl border border-line bg-surface p-5 shadow-sm"
-                >
-                  <Icon className="mb-4 text-brand" size={24} />
-                  <h3 className="font-bold">{String(title)}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted">{String(text)}</p>
-                </div>
-              ))}
-            </SwiperSection>
-          </div>
-        </section>
-
-        {/* ── Locations ───────────────────────────────────────────────── */}
+{/* ── Locations ───────────────────────────────────────────────── */}
         <section id="locations" className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
           <Reveal className="mb-8 sm:mb-10">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand">
