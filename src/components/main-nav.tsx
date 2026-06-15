@@ -11,7 +11,7 @@ const departments = [
     columns: [
       ["For rent", "Apartments", "Villas", "Family houses"],
       ["For sale", "Land", "Commercial", "Investment homes"],
-      ["Locations", "Kacyiru", "Kibagabaga", "Nyarutarama"],
+      ["Locations", "Kacyiru", "Kibagabaga", "Kigali"],
     ],
     promo: "Verified homes, apartments, villas, land, offices, and retail spaces across Kigali.",
   },
@@ -31,7 +31,7 @@ const departments = [
     columns: [
       ["Hot areas", "Kibagabaga", "Kacyiru", "Gacuriro"],
       ["Luxury areas", "Nyarutarama", "Kiyovu", "Kimihurura"],
-      ["Growth areas", "Rebero", "Kanombe", "Remera"],
+      ["Growth areas", "Rebero", "Kicukiro", "Remera"],
     ],
     promo: "Compare Kigali neighborhoods by lifestyle, access, and available listings.",
   },
@@ -61,8 +61,8 @@ export function MainNav() {
             href={item.href}
             onMouseEnter={() => setOpenMenu(item.label)}
             onFocus={() => setOpenMenu(item.label)}
-            className={`flex shrink-0 items-center gap-1 px-4 py-2 text-sm font-semibold ${
-              openMenu === item.label ? "bg-ipopo-blue text-white" : "hover:bg-[#0f5138]"
+            className={`flex shrink-0 items-center gap-1 px-4 py-2 text-sm font-semibold transition ${
+              openMenu === item.label ? "bg-white/20" : "hover:bg-white/12"
             }`}
           >
             {item.label}

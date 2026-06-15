@@ -109,8 +109,8 @@ export function PropertyFilters({ listings }: { listings: PropertyListing[] }) {
     location && { label: location, clear: () => setLocation("") },
     purpose !== "all" && { label: `For ${purpose}`, clear: () => setPurpose("all") },
     category !== "all" && { label: category, clear: () => setCategory("all") },
-    minPrice && { label: `Min $${Number(minPrice).toLocaleString()}`, clear: () => setMinPrice("") },
-    maxPrice && { label: `Max $${Number(maxPrice).toLocaleString()}`, clear: () => setMaxPrice("") },
+    minPrice && { label: `Min Rwf ${Number(minPrice).toLocaleString()}`, clear: () => setMinPrice("") },
+    maxPrice && { label: `Max Rwf ${Number(maxPrice).toLocaleString()}`, clear: () => setMaxPrice("") },
   ].filter(Boolean) as { label: string; clear: () => void }[];
 
   const clearAll = () => {

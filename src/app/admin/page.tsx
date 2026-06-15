@@ -20,7 +20,7 @@ export default function AdminPage() {
       <SiteHeader />
       <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-brand">Admin</p>
+          <p className="text-sm font-bold uppercase tracking-[0.22em] text-gold">Admin</p>
           <h1 className="mt-3 text-4xl font-black tracking-tight">Owner listing studio</h1>
           <p className="mt-3 max-w-2xl text-muted">
             Add property details, preview images instantly, and save a clean listing draft for review before it appears publicly.

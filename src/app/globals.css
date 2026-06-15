@@ -66,9 +66,9 @@ html {
 
 .grain {
   background-image:
-    radial-gradient(circle at 20% 10%, rgba(22, 0, 255, 0.12), transparent 24rem),
+    radial-gradient(circle at 20% 10%, rgba(0, 153, 214, 0.10), transparent 24rem),
     radial-gradient(circle at 72% 0%, rgba(245, 196, 0, 0.16), transparent 22rem),
-    radial-gradient(circle at 80% 82%, rgba(0, 107, 53, 0.14), transparent 24rem);
+    radial-gradient(circle at 80% 82%, rgba(26, 122, 60, 0.10), transparent 24rem);
 }
 
 .text-balance {
@@ -358,6 +358,16 @@ button {
 @keyframes card-in {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* WhatsApp floating button pulse ring */
+@keyframes wa-pulse {
+  0%   { transform: scale(1); opacity: 0.65; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.whatsapp-pulse {
+  animation: wa-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Mobile drawer slide-in */
